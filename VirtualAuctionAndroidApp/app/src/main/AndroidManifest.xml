@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.auction.virtualauctionclient">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name="com.auction.virtualauctionclient.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.LoginScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.RegisterScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.GameScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.RoomScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.RoomStatusScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.AuctionSettingsScreen"
+            android:exported="true"
+            />
+        <activity
+        android:name="com.auction.virtualauctionclient.auctionscreen.AuctionScreen"
+        android:exported="true"
+        />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.SettingsScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.UnsoldPlayersForShortlistListScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.UsernamesListScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.AuctionBreakScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.TeamsScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.UnsoldPlayersListScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.TeamPlayersListScreen"
+            android:exported="true"
+            />
+    </application>
+
+</manifest>

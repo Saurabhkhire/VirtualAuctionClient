@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/create_room_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="150dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Create Room"/>
+
+    <TextView
+        android:id="@+id/RoomIdTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_room_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="300dp"
+        android:layout_marginTop="100dp"
+        android:inputType="textPersonName"
+        android:text="Room Id"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/RoomIdEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/RoomIdTxt"
+        android:layout_alignBottom="@+id/create_room_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="21dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="16sp" />
+
+     <Button
+        android:id="@+id/join_room_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RoomIdEdit"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="100dp"
+        android:ems="10"
+        android:text="Join Room" />
+
+
+</RelativeLayout>

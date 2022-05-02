@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MatchRunning"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+        <TextView
+            android:id="@+id/PlayerNameEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/PlayerCountryEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:layout_toEndOf="@+id/PlayerNameEdit"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/PlayerRoleEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:layout_toEndOf="@+id/PlayerCountryEdit"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BatingStyleEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_toEndOf="@+id/PlayerRoleEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BowlingStyleEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_toEndOf="@+id/BatingStyleEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BattingPositionEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_toEndOf="@+id/BowlingStyleEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/PriceinLakhsEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_toEndOf="@+id/BattingPositionEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/PriceinCroresEdit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/PlayerNameEdit"
+            android:layout_toEndOf="@+id/PriceinLakhsEdit"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="21dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+
+</RelativeLayout>
