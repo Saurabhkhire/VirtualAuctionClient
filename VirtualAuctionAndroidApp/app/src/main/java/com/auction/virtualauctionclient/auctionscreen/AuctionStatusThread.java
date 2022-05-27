@@ -3,13 +3,22 @@ package com.auction.virtualauctionclient.auctionscreen;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.CommonLogic;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.PlayerStatus;
 import com.auction.virtualauctionclient.model.Team;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,18 +37,25 @@ public class AuctionStatusThread implements Runnable{
     private int maxTotal;
     private int maxBudget;
     private Button BidBtn;
-    private TextView TeamNameTxt, PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, PriceTxt, CurrentBid, TimeTxt, CurrentBudgetEdit, HostEdit;
+    private TextView PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceTxt, TimeTxt, CurrentBudgetEdit, HostEdit;
+    private ImageView CurrentBid, TeamNameTxt, PlayerImage1, PlayerImage2;
+    private AssetManager assetManager;
 
-    public AuctionStatusThread(TextView TeamNameTxt, TextView PlayerNameTxt, TextView PlayerCountryTxt, TextView PlayerRoleTxt, TextView PriceTxt, TextView CurrentBid, TextView TimeTxt, TextView CurrentBudgetEdit,TextView HostEdit, Button BidBtn, String roomId, String teamName, String userName, int maxForeigners, int minTotal, int maxTotal, int maxBudget, Context context, Context contextForFinish) {
+    public AuctionStatusThread(ImageView TeamNameTxt, TextView PlayerNameTxt, TextView PlayerCountryTxt, TextView PlayerRoleTxt, TextView BattingStyleTxt, TextView BowlingStyleTxt, TextView BattingPositionTxt, TextView PriceTxt, ImageView CurrentBid, TextView TimeTxt, TextView CurrentBudgetEdit, TextView HostEdit, ImageView PlayerImage1, ImageView PlayerImage2, Button BidBtn, String roomId, String teamName, String userName, int maxForeigners, int minTotal, int maxTotal, int maxBudget, AssetManager assetManager, Context context, Context contextForFinish) {
         this.TeamNameTxt = TeamNameTxt;
         this.PlayerNameTxt = PlayerNameTxt;
         this.PlayerCountryTxt = PlayerCountryTxt;
         this.PlayerRoleTxt = PlayerRoleTxt;
+        this.BattingStyleTxt = BattingStyleTxt;
+        this.BowlingStyleTxt = BowlingStyleTxt;
+        this.BattingPositionTxt = BattingPositionTxt;
         this.PriceTxt = PriceTxt;
         this.CurrentBid = CurrentBid;
         this.TimeTxt = TimeTxt;
         this.CurrentBudgetEdit = CurrentBudgetEdit;
         this.HostEdit = HostEdit;
+        this.PlayerImage1 = PlayerImage1;
+        this.PlayerImage2 = PlayerImage2;
         this.BidBtn = BidBtn;
         this.roomId = roomId;
         this.teamName = teamName;
@@ -48,6 +64,7 @@ public class AuctionStatusThread implements Runnable{
         this.minTotal = minTotal;
         this.maxTotal = maxTotal;
         this.maxBudget = maxBudget;
+        this.assetManager = assetManager;
         this.context = context;
         this.contextForFinish = contextForFinish;
     }
@@ -107,10 +124,19 @@ public class AuctionStatusThread implements Runnable{
                             PlayerNameTxt.setText(response.body().getPlayerName());
                             PlayerCountryTxt.setText(playerCountry);
                             PlayerRoleTxt.setText(playerRole);
+                            BattingStyleTxt.setText(response.body().getBattingStyle());
+                            BowlingStyleTxt.setText(response.body().getBowlingStyle());
+                            BattingPositionTxt.setText(response.body().getBattingPosition());
                             PriceTxt.setText(priceStr);
-                            CurrentBid.setText(response.body().getTeam());
+                            //CurrentBid.setText(response.body().getTeam());
+                            if(!response.body().getTeam().equals("") && response.body().getTeam() != null) {
+                                CommonLogic.setTeamImage(response.body().getTeam(), CurrentBid, assetManager);
+                            }
+
                             TimeTxt.setText(timeStr);
                             CurrentBudgetEdit.setText(budgetStr);
+
+                            CommonLogic.setPlayerImage(response.body().getPlayerName(), PlayerImage1, PlayerImage2, assetManager);
 
                             boolean maxForeignCheck = !playerCountry.equals("India") && foreigners >= maxForeigners;
                             boolean minBatsmanCheck = !playerRole.equals("Batsman") && batsman == 0 && total == maxTotal -1;
@@ -165,7 +191,7 @@ public class AuctionStatusThread implements Runnable{
             intent.putExtra("MinTotal", minTotal);
             intent.putExtra("MaxTotal", maxTotal);
             intent.putExtra("MaxBudget", maxBudget);
-            intent.putExtra("Status", status[0]);
+            intent.putExtra("RoomStatus", status[0]);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
 

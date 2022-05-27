@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
 import com.auction.virtualauctionclient.auctionscreen.AuctionScreen;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.RoomStatusResponse;
 
@@ -60,14 +61,17 @@ public class RoomStatusThread implements Runnable {
                 (Client.getClient().roomStatus("application/json", roomInfo)).enqueue(new Callback<RoomStatusResponse>() {
                     @Override
                     public void onResponse(Call<RoomStatusResponse> call, Response<RoomStatusResponse> response) {
-                        //Log.d("responseBodyGET", response.body().toString());
+
+                        String message = response.body().getMessage();
                         status[0] = response.body().getRoomStatus();
 
-                        if(!status[0].equals("Start")) {
+                        if(message.equals(Constants.OK_MESSAGE)) {
+
+                        if(!status[0].equals(Constants.I_START_STATUS)) {
                             SettingsBtn.setVisibility(View.INVISIBLE);
                         }
 
-                        if (status[0].equals("Start") || status[0].equals("Paused")) {
+                        if (status[0].equals(Constants.I_START_STATUS) || status[0].equals(Constants.I_HALT_STATUS)) {
 
                             String usernameList = response.body().getUsernameslist();
                             String teamsList = response.body().getTeamslist();
@@ -86,14 +90,14 @@ public class RoomStatusThread implements Runnable {
                                 for (int i = 0; i < splitUsernameList.length; i++) {
                                     if (splitUsernameList[i].equals(host)) {
                                         usernames = usernames + splitUsernameList[i] + "(Host) \n";
-                                        if (splitTeamList[i].equals("") || splitTeamList[i] == null || splitTeamList[i].equals("NA")) {
+                                        if (splitTeamList[i].equals("") || splitTeamList[i] == null || splitTeamList[i].equals(Constants.I_NA)) {
                                             teams = teams + "\n";
                                         } else {
                                             teams = teams + splitTeamList[i] + "\n";
                                         }
                                     } else {
                                         usernames = usernames + splitUsernameList[i] + "\n";
-                                        if (splitTeamList[i].equals("") || splitTeamList[i] == null || splitTeamList[i].equals("NA")) {
+                                        if (splitTeamList[i].equals("") || splitTeamList[i] == null || splitTeamList[i].equals(Constants.I_NA)) {
                                             teams = teams + "\n";
                                         } else {
                                             teams = teams + splitTeamList[i] + "\n";
@@ -124,6 +128,7 @@ public class RoomStatusThread implements Runnable {
 
                         }
                         }
+                        }
 
 
 
@@ -148,7 +153,7 @@ public class RoomStatusThread implements Runnable {
 
         }
 
-        if(status[0].equals("Ongoing") || status[0].equals("TempPaused") || status[0].equals("TempPausedForRound2") || status[0].equals("TempPausedForRound3")) {
+        if(status[0].equals(Constants.I_ONGOING_STATUS) || status[0].equals(Constants.I_PAUSED_STATUS) || status[0].equals(Constants.I_WAITING_FOR_ROUND2) || status[0].equals(Constants.I_WAITING_FOR_ROUND3)) {
 
             Intent intent = new Intent(context, AuctionScreen.class);
             intent.putExtra("Username", userName);

@@ -5,6 +5,7 @@ import com.auction.virtualauctionclient.model.Bid;
 import com.auction.virtualauctionclient.model.NamesList;
 import com.auction.virtualauctionclient.model.Login;
 import com.auction.virtualauctionclient.model.PlayerInfoList;
+import com.auction.virtualauctionclient.model.PlayerName;
 import com.auction.virtualauctionclient.model.PlayerStatus;
 import com.auction.virtualauctionclient.model.Register;
 import com.auction.virtualauctionclient.model.ResponseMessage;
@@ -111,4 +112,8 @@ public interface Api {
     @POST("/getteamplayerslist/")
         // API's endpoints
     Call<PlayerInfoList> getTeamPlayersList(@Header("Content-Type") String content, @Body Team team);
+
+    @POST("/addplayertoteamafterauction")
+        // API's endpoints
+    Call<ResponseMessage> addPlayerToTeamAfterAuction(@Header("Content-Type") String content, @Body PlayerName playerName);
 }

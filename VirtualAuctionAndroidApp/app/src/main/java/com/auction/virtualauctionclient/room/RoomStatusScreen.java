@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
 import com.auction.virtualauctionclient.common.CommonApiLogic;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.model.RoomInfo;
 
@@ -40,7 +43,7 @@ public class RoomStatusScreen extends AppCompatActivity
         Bundle bundle = getIntent().getExtras();
         String userName = bundle.getString("Username");
         String roomId = bundle.getString("RoomId");
-        String status = bundle.getString("Status");
+        String status = bundle.getString("RoomStatus");
 
         SettingsBtn = findViewById(R.id.settings_button);
         StartBtn = findViewById(R.id.start_button);
@@ -74,7 +77,7 @@ public class RoomStatusScreen extends AppCompatActivity
                 Intent intent = new Intent(RoomStatusScreen.this, AuctionSettingsScreen.class);
                 intent.putExtra("Username", userName);
                 intent.putExtra("RoomId", roomId);
-                intent.putExtra("Status", status);
+                intent.putExtra("RoomStatus", status);
                 intent.putExtra("Host", HostText.getText().toString());
                 // start the activity connect to the specified class
                 startActivity(intent);
@@ -99,7 +102,16 @@ public class RoomStatusScreen extends AppCompatActivity
                         @Override
                         public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
                             //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
 
+                            if(message.equals(Constants.OK_MESSAGE)) {
+
+                            } else {
+
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
 
                         }
 
@@ -127,12 +139,9 @@ public class RoomStatusScreen extends AppCompatActivity
 
                 String message = CommonApiLogic.leaveRoomApi(roomInfo);
 
-                if(!message.equals("Error")) {
-                    //Intent intent = new Intent(RoomStatusScreen.this, RoomScreen.class);
-                    //startActivity(intent);
                     roomStatusThread.continueThread = false;
                     finish();
-                }
+
 
 
             }
@@ -149,11 +158,14 @@ public class RoomStatusScreen extends AppCompatActivity
 
                 String message = CommonApiLogic.quitRoomApi(roomInfo);
 
-                if(!message.equals("Error")) {
-                    //Intent intent = new Intent(RoomStatusScreen.this, RoomScreen.class);
-                    //startActivity(intent);
+                if(message.equals(Constants.OK_MESSAGE)) {
 
                     finish();
+                } else {
+
+                    Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
 
 

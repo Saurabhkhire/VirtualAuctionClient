@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.RoomStatus;
 import com.auction.virtualauctionclient.model.Team;
@@ -72,7 +73,7 @@ public class AuctionBreakStatusThread implements Runnable{
 
                             HostEdit.setText(response.body().getHostName());
 
-                            if (response.body().getHostName().equals("Host")) {
+                            if (response.body().getHostName().equals(Constants.I_HOST)) {
 
                                 ContinueBtn.setEnabled(true);
                             } else {
@@ -108,7 +109,7 @@ public class AuctionBreakStatusThread implements Runnable{
 
         }
 
-        if(status[0].equals("Ongoing")) {
+        if(status[0].equals(Constants.I_ONGOING_STATUS)) {
 
             Intent intent = new Intent(context, AuctionScreen.class);
             intent.putExtra("Username", userName);

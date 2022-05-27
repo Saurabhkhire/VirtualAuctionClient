@@ -3,9 +3,11 @@ package com.auction.virtualauctionclient.room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +15,7 @@ import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
 import com.auction.virtualauctionclient.auctionscreen.AuctionBreakScreen;
 import com.auction.virtualauctionclient.auctionscreen.AuctionScreen;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.RoomStatus;
 import com.auction.virtualauctionclient.model.RoomStatusResponse;
@@ -33,7 +36,7 @@ public class RoomScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_screen);
         Bundle bundle = getIntent().getExtras();
-        String userName = bundle.getString("Username");
+        String userName = bundle.getString(Constants.I_USERNAME);
 
         CreateRoomBtn = findViewById(R.id.create_room_button);
         JoinRoomBtn = findViewById(R.id.join_room_button);
@@ -46,6 +49,8 @@ public class RoomScreen extends AppCompatActivity {
 
                 Username username = new Username();
                 username.setUsername(userName);
+
+                try {
                 (Client.getClient().createRoom("application/json", username)).enqueue(new Callback<RoomInfo>() {
                     @Override
                     public void onResponse(Call<RoomInfo> call, Response<RoomInfo> response) {
@@ -53,14 +58,20 @@ public class RoomScreen extends AppCompatActivity {
                         String message = response.body().getMessage();
                         String roomId = response.body().getRoomId();
 
-                        if(!message.equals("Error")) {
+                        if(message.equals(Constants.OK_MESSAGE)) {
 
                             Intent intent = new Intent(RoomScreen.this, RoomStatusScreen.class);
                             intent.putExtra("Username", userName);
                             intent.putExtra("RoomId", roomId);
-                            intent.putExtra("Status", "Start");
+                            intent.putExtra("RoomStatus", Constants.I_START_STATUS);
                             startActivity(intent);
 
+
+                        } else {
+
+                            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
 
                         }
                     }
@@ -73,7 +84,9 @@ public class RoomScreen extends AppCompatActivity {
                 });
 
 
-
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
 
             }
@@ -94,17 +107,29 @@ public class RoomScreen extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<RoomStatus> call, Response<RoomStatus> response) {
 
+                        String message = response.body().getMessage();
                         String status = response.body().getRoomStatus();
 
-                            if(status.equals("Paused") || status.equals("Start")) {
+
+                        if(message.equals(Constants.OK_MESSAGE)) {
+
+                            if (status.equals(Constants.I_HALT_STATUS) || status.equals(Constants.I_START_STATUS)) {
 
                                 Intent intent = new Intent(RoomScreen.this, RoomStatusScreen.class);
                                 intent.putExtra("Username", userName);
                                 intent.putExtra("RoomId", RoomIdEdit.getText().toString());
-                                intent.putExtra("Status", status);
+                                intent.putExtra("RoomStatus", status);
                                 startActivity(intent);
 
                             }
+                        } else {
+
+                            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+
+
+                        }
 
                     }
 
@@ -125,6 +150,7 @@ public class RoomScreen extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<RoomStatusResponse> call, Response<RoomStatusResponse> response) {
                             //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
                             String team = response.body().getTeam();
                             String status = response.body().getRoomStatus();
                             int maxForeigners = response.body().getMaxForeigners();
@@ -134,12 +160,14 @@ public class RoomScreen extends AppCompatActivity {
 
                             Intent intent = new Intent(RoomScreen.this, AuctionScreen.class);;
 
-                            if(status.equals("Ongoing") || status.equals("TempPaused") || status.equals("TempPausedForRound2") || status.equals("TempPausedForRound3")) {
+                            if(message.equals(Constants.OK_MESSAGE)) {
 
-                                if (status.equals("TempPausedForRound2") || status.equals("TempPausedForRound3")) {
+                            if(status.equals(Constants.I_ONGOING_STATUS) || status.equals(Constants.I_PAUSED_STATUS) || status.equals(Constants.I_WAITING_FOR_ROUND2) || status.equals(Constants.I_WAITING_FOR_ROUND3)) {
+
+                                if (status.equals(Constants.I_WAITING_FOR_ROUND2) || status.equals(Constants.I_WAITING_FOR_ROUND3)) {
 
                                     intent = new Intent(RoomScreen.this, AuctionBreakScreen.class);
-                                    intent.putExtra("Status", status);
+                                    intent.putExtra("RoomStatus", status);
 
                                 }
                                 intent.putExtra("Username", userName);
@@ -150,7 +178,7 @@ public class RoomScreen extends AppCompatActivity {
                                 intent.putExtra("MaxTotal", maxTotal);
                                 intent.putExtra("MaxBudget", maxBudget);
                                 startActivity(intent);
-
+                            }
                             }
                         }
 

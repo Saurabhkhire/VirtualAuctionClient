@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.PlayerInfoList;
 import com.auction.virtualauctionclient.model.Team;
 
@@ -66,13 +67,13 @@ public class TeamPlayersListScreen extends AppCompatActivity {
                 TextView teamNameTxt = new TextView(TeamPlayersListScreen.this);
                 teamNameTxt.setGravity(Gravity.CENTER);
                 teamNameTxt.setWidth(30);
-                teamNameTxt.setTextSize(10);
+                teamNameTxt.setTextSize(30);
                 teamNameTxt.setText(team);
-                mListview.addFooterView(teamNameTxt);
+                mListview.addHeaderView(teamNameTxt);
                 TextView teamStats = new TextView(TeamPlayersListScreen.this);
                 //teamStats.setGravity(Gravity.CENTER);
                 //teamStats.setWidth(30);
-                teamStats.setTextSize(5);
+                teamStats.setTextSize(30);
                 teamStats.setText("Budget Remaining : " + String.valueOf(response.body().getBudget()) + "\n Batsman : " + String.valueOf(response.body().getBatsman()) + "\n Wicket Keepers : " + String.valueOf(response.body().getWicketKeepers()) +  "\n All Rounders : " + String.valueOf(response.body().getAllRounders()) + "\n Fast Bowlers : " + String.valueOf(response.body().getFastBowlers()) + "\n Spin Bowlers : " + String.valueOf(response.body().getSpinBowlers()) + "\n Foreigners : " + String.valueOf(response.body().getForeigners()) + "\n Total : " + String.valueOf(response.body().getTotal()));
                 mListview.addFooterView(teamStats);
 

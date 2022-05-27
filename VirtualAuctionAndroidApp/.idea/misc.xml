@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/circle.xml" value="0.239" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/image_border.xml" value="0.124" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/rectangle.xml" value="0.123" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/rectangle_border_omit_below.xml" value="0.123" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-land/auction_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/activity_main.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/add_players_after_auction_list_screen.xml" value="0.22826086956521738" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/add_players_after_auction_listview.xml" value="0.22826086956521738" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_break_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_params_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_screen.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_settings_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/current_set_players_list_screen.xml" value="0.22826086956521738" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/current_set_players_listview.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/login_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/register_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/room_screen.xml" value="0.136" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/room_status_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/settings_screen.xml" value="0.192481884057971" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

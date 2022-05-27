@@ -68,10 +68,20 @@
         android:text="Skip this Set" />
 
     <Button
-        android:id="@+id/pause_button"
+        android:id="@+id/unskip_set_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/skip_this_set_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:ems="10"
+        android:text="Unskip the Set" />
+
+    <Button
+        android:id="@+id/pause_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/unskip_set_button"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="100dp"
         android:ems="10"

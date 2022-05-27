@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
 import com.auction.virtualauctionclient.common.CommonApiLogic;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.SkipInfo;
@@ -39,7 +40,7 @@ public class AuctionBreakScreen extends AppCompatActivity  {
         int minTotal = bundle.getInt("MinTotal");
         int maxTotal = bundle.getInt("MaxTotal");
         int maxBudget = bundle.getInt("MaxBudget");
-        String status = bundle.getString("Status");
+        String status = bundle.getString("RoomStatus");
 
         HostEdit = findViewById(R.id.HostEdit);
         LeaveBtn = findViewById(R.id.leave_button);
@@ -116,15 +117,17 @@ public class AuctionBreakScreen extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                try {
-                    SkipInfo skipInfo = new SkipInfo();
-                    skipInfo.setUsername(userName);
-                    skipInfo.setRoomId(roomId);
+                RoomInfo roomInfo = new RoomInfo();
+                roomInfo.setUsername(userName);
+                roomInfo.setRoomId(roomId);
 
-                    (Client.getClient().playAuction("application/json", skipInfo)).enqueue(new Callback<ResponseMessage>() {
+                try {
+
+                    (Client.getClient().playAuction("application/json", roomInfo)).enqueue(new Callback<ResponseMessage>() {
                         @Override
                         public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
                             //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
 
                         }
 

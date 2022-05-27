@@ -6,245 +6,435 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/RoomIdText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="Room Id" />
 
     <TextView
         android:id="@+id/RoomIdEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/RoomIdText"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:text="" />
 
     <TextView
         android:id="@+id/HostText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/RoomIdText"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle"
+        android:layout_alignBaseline="@+id/RoomIdEdit"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:text="" />
 
     <TextView
+        android:id="@+id/TeamNameBorder"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="360dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rectangle"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <ImageView
         android:id="@+id/TeamName"
+        android:layout_width="58dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="361dp"
+        android:layout_marginTop="6dp"
+        android:background="#F2F2F2"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TableLayout
+        android:id="@+id/PlayerInfoTable"
+        android:background="#000000"
+        android:layout_below="@+id/RoomIdEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/HostText"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="260dp"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text=""
-        android:inputType="textPersonName"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp">
+
+    <TableRow android:background="#000000">
 
     <TextView
         android:id="@+id/PlayerNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TeamName"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:background="#F2F2F2"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         android:text="Player Name"
         android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/PlayerCountryTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PlayerNameTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Player Country" />
-
-    <TextView
-        android:id="@+id/PlayerRoleTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PlayerCountryTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Player Role" />
-
-    <TextView
-        android:id="@+id/PriceTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PlayerRoleTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Price" />
-
-    <TextView
-        android:id="@+id/CurrentBidTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PriceTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Current Bid" />
-
-    <TextView
-        android:id="@+id/TimeTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/CurrentBidTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Time" />
-
-    <TextView
-        android:id="@+id/BudgetTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TimeTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Current Budget" />
 
     <TextView
         android:id="@+id/PlayerNameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/PlayerNameTxt"
-        android:layout_alignBottom="@+id/TeamName"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:textSize="16sp"
+        android:background="#F2F2F2"
+        android:layout_marginTop="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""/>
+        android:text=""
+        android:textSize="16sp" />
+
+    </TableRow>
+    <TableRow android:background="#000000">
 
     <TextView
-        android:id="@+id/PlayerCountryEdit"
+        android:id="@+id/PlayerCountryTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/PlayerCountryTxt"
-        android:layout_alignBottom="@+id/PlayerNameEdit"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:textSize="16sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:background="#F2F2F2"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:text="Player Country"
+        android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/PlayerCountryEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <TableRow android:background="#000000">
+    <TextView
+        android:id="@+id/PlayerRoleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F2F2F2"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:text="Player Role"
+        android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/PlayerRoleEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+    </TableRow>
+
+    <TableRow android:background="#000000">
+        <TextView
+            android:id="@+id/BattingStyleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:text="Batting Style"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BattingStyleEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+    </TableRow>
+    <TableRow android:background="#000000">
+
+        <TextView
+            android:id="@+id/BowlingStyleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:text="Bowling Style"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BowlingStyleEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <TableRow android:background="#000000">
+        <TextView
+            android:id="@+id/BattingPositionTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="Batting Position"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/BattingPositionEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp" />
+    </TableRow>
+
+    </TableLayout>
+
 
     <TextView
-        android:id="@+id/PlayerRoleEdit"
-        android:layout_width="wrap_content"
+        android:id="@+id/CurrentBidTxt"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/PlayerRoleTxt"
-        android:layout_alignBottom="@+id/PlayerCountryTxt"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
+        android:background="@drawable/rectangle"
+        android:layout_toRightOf="@+id/PlayerInfoTable"
+        android:layout_below="@+id/TeamName"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Current Bid"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/CurrentBidEditBorder"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/CurrentBidTxt"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@+id/PlayerInfoTable"
+        android:background="@drawable/rectangle_border_omit_below"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="" />
+        android:text=""
+        android:textSize="16sp" />
 
+    <ImageView
+        android:id="@+id/CurrentBidEdit"
+        android:layout_width="138dp"
+        android:layout_height="68dp"
+        android:layout_below="@+id/CurrentBidTxt"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/PlayerInfoTable"
+        android:background="#F2F2F2"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/PriceTxt"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle"
+        android:layout_toRightOf="@+id/PlayerInfoTable"
+        android:layout_below="@+id/CurrentBidEditBorder"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Price"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/PriceEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/PriceTxt"
-        android:layout_alignBottom="@+id/PlayerRoleTxt"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rectangle_border_omit_below"
+        android:layout_toRightOf="@+id/PlayerInfoTable"
+        android:layout_below="@+id/PriceTxt"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="" />
+        android:text=""
+        android:textSize="16sp" />
+
 
     <TextView
-        android:id="@+id/CurrentBidEdit"
-        android:layout_width="wrap_content"
+        android:id="@+id/BudgetTxt"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/CurrentBidTxt"
-        android:layout_alignBottom="@+id/PriceTxt"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:background="@drawable/rectangle"
+        android:layout_below="@+id/PlayerInfoTable"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Current Budget"
+        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/TimeEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TimeTxt"
-        android:layout_alignBottom="@+id/CurrentBidTxt"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
-        android:ems="10"
-        android:text="" />
 
     <TextView
         android:id="@+id/BudgetEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/BudgetTxt"
-        android:layout_alignBottom="@+id/TimeEdit"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
-        android:ems="10"
-        android:text="" />
-
-    <Button
-        android:id="@+id/bid_button"
-        android:inputType="textPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:background="@drawable/rectangle_border_omit_below"
         android:layout_below="@+id/BudgetTxt"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:text="BID" />
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:text=""
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/PlayerImage1Border"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:background="@drawable/rectangle"
+        android:layout_toRightOf="@+id/CurrentBidTxt"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:text=""
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/PlayerImage1"
+        android:layout_width="178dp"
+        android:layout_height="148dp"
+        android:background="#F2F2F2"
+        android:layout_toRightOf="@+id/CurrentBidTxt"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:text=""
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/PlayerImage2Border"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:background="@drawable/rectangle"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_toRightOf="@+id/CurrentBidTxt"
+        android:layout_below="@+id/PlayerImage1Border"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:text=""
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/PlayerImage2"
+        android:layout_width="178dp"
+        android:layout_height="148dp"
+        android:background="#F2F2F2"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_toRightOf="@+id/CurrentBidTxt"
+        android:layout_below="@+id/PlayerImage1Border"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:text=""
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/TimeEdit"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle"
+        android:layout_below="@+id/PlayerInfoTable"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/BudgetEdit"
+        android:ems="10"
+        android:text=""
+        android:textStyle="bold"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/teams_button"
-        android:inputType="textPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/BudgetTxt"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="100dp"
+        android:layout_below="@+id/BudgetEdit"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
         android:text="Teams" />
 
     <Button
-        android:id="@+id/settings_button"
+        android:id="@+id/bid_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@+id/TimeEdit"
+        android:layout_below="@+id/PriceEdit"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:inputType="textPersonName"
+        android:text="BID" />
+
+    <Button
+        android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/BudgetTxt"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="100dp"
+        android:layout_toRightOf="@+id/teams_button"
+        android:layout_below="@+id/BudgetEdit"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
         android:text="Settings" />
 
 

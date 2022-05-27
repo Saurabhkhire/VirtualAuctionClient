@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/create_room_button"
+        android:background="#F2F2F2"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="300dp"
@@ -42,6 +43,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="21dp"
+        android:background="#F2F2F2"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
@@ -56,6 +58,16 @@
         android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Join Room" />
+
+    <Button
+        android:id="@+id/join_random_room_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/join_room_button"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="100dp"
+        android:ems="10"
+        android:text="Join Random Room" />
 
 
 </RelativeLayout>

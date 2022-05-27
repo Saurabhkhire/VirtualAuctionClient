@@ -3,14 +3,17 @@ package com.auction.virtualauctionclient.auctionscreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
 import com.auction.virtualauctionclient.common.CommonApiLogic;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.SkipInfo;
@@ -21,7 +24,7 @@ import retrofit2.Response;
 
 public class SettingsScreen extends AppCompatActivity  {
 
-    private Button LeaveBtn,QuitBtn, AuctionParamsBtn, SkipAllBtn, SkipThisSetBtn, PauseBtn, PlayBtn, ChangeHostBtn;
+    private Button LeaveBtn,QuitBtn, AuctionParamsBtn, SkipAllBtn, UnskipSetBtn, SkipThisSetBtn, PauseBtn, PlayBtn, ChangeHostBtn;
 
    // public SettingsScreen(Context contextForFinish) {
        //this.contextForFinish = contextForFinish;
@@ -47,6 +50,7 @@ public class SettingsScreen extends AppCompatActivity  {
         AuctionParamsBtn = findViewById(R.id.auction_params_button);
         SkipAllBtn = findViewById(R.id.skip_all_button);
         SkipThisSetBtn = findViewById(R.id.skip_this_set_button);
+        UnskipSetBtn = findViewById(R.id.unskip_set_button);
         PauseBtn = findViewById(R.id.pause_button);
         PlayBtn = findViewById(R.id.play_button);
         ChangeHostBtn = findViewById(R.id.change_host_button);
@@ -112,12 +116,19 @@ public class SettingsScreen extends AppCompatActivity  {
                     SkipInfo skipInfo = new SkipInfo();
                     skipInfo.setUsername(userName);
                     skipInfo.setRoomId(roomId);
-                    skipInfo.setSkipType("SkipAll");
+                    skipInfo.setSkipType(Constants.I_SKIP_ENTIRE_ROUND);
 
                     (Client.getClient().skipSets("application/json", skipInfo)).enqueue(new Callback<ResponseMessage>() {
                         @Override
                         public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
                             //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
+
+                            if(!message.equals(Constants.OK_MESSAGE)) {
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
 
                         }
 
@@ -143,12 +154,57 @@ public class SettingsScreen extends AppCompatActivity  {
                     SkipInfo skipInfo = new SkipInfo();
                     skipInfo.setUsername(userName);
                     skipInfo.setRoomId(roomId);
-                    skipInfo.setSkipType("SkipOneSet");
+                    skipInfo.setSkipType(Constants.I_SKIP_CURRENT_SET);
 
                     (Client.getClient().skipSets("application/json", skipInfo)).enqueue(new Callback<ResponseMessage>() {
                         @Override
                         public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
                             //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
+
+                            if(!message.equals(Constants.OK_MESSAGE)) {
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseMessage> call, Throwable t) {
+                            Log.d("f", t.getMessage());
+                        }
+
+                    });
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
+
+        UnskipSetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    SkipInfo skipInfo = new SkipInfo();
+                    skipInfo.setUsername(userName);
+                    skipInfo.setRoomId(roomId);
+                    skipInfo.setSkipType(Constants.I_UNSKIP);
+
+                    (Client.getClient().skipSets("application/json", skipInfo)).enqueue(new Callback<ResponseMessage>() {
+                        @Override
+                        public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
+                            //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
+
+                            if(!message.equals(Constants.OK_MESSAGE)) {
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
 
                         }
 
@@ -174,7 +230,33 @@ public class SettingsScreen extends AppCompatActivity  {
                 roomInfo.setUsername(userName);
                 roomInfo.setRoomId(roomId);
 
-                String message = CommonApiLogic.pauseAuctionApi(roomInfo);
+                try {
+
+                    (Client.getClient().pauseAuction("application/json", roomInfo)).enqueue(new Callback<ResponseMessage>() {
+                        @Override
+                        public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
+                            //Log.d("responseBodyGET", response.body().toString());
+                           String message = response.body().getMessage();
+                           Log.i("msg",message);
+
+                            if(!message.equals(Constants.OK_MESSAGE)) {
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseMessage> call, Throwable t) {
+                            Log.d("f", t.getMessage());
+                        }
+
+                    });
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
             }
         });
@@ -187,7 +269,32 @@ public class SettingsScreen extends AppCompatActivity  {
                 roomInfo.setUsername(userName);
                 roomInfo.setRoomId(roomId);
 
-                String message = CommonApiLogic.playAuctionApi(roomInfo);
+                try {
+
+                    (Client.getClient().playAuction("application/json", roomInfo)).enqueue(new Callback<ResponseMessage>() {
+                        @Override
+                        public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
+                            //Log.d("responseBodyGET", response.body().toString());
+                            String message = response.body().getMessage();
+
+                            if(!message.equals(Constants.OK_MESSAGE)) {
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseMessage> call, Throwable t) {
+                            Log.d("f", t.getMessage());
+                        }
+
+                    });
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
 
             }

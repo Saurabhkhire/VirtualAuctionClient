@@ -1,16 +1,20 @@
 package com.auction.virtualauctionclient.auctionscreen;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.model.RoomInfo;
 
@@ -72,6 +76,16 @@ public class UsernamesListAdapter extends BaseAdapter {
                     public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
 
                         String message = response.body().getMessage();
+
+                        if(message.equals(Constants.OK_MESSAGE)) {
+
+                            ((Activity)mContext).finish();
+
+                        }   else {
+                            Toast toast = Toast.makeText(mContext, message, Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }
 
 
                     }

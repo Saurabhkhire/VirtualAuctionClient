@@ -3,13 +3,17 @@ package com.auction.virtualauctionclient.loginregister;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.Login;
 import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.room.GameScreen;
@@ -34,6 +38,9 @@ public class LoginScreen extends AppCompatActivity {
         PasswordEdit = findViewById(R.id.PasswordEdit);
         LoginBtn = findViewById(R.id.login_button);
 
+
+
+
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +57,12 @@ public class LoginScreen extends AppCompatActivity {
                 public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
 
                     String message = response.body().getMessage();
+                    Log.i("aaau", message);
 
                     if(message.equals("UserExist")) {
 
                                 Intent intent = new Intent(LoginScreen.this, GameScreen.class);
-                                intent.putExtra("Username", UsernameEdit.getText().toString());
+                                intent.putExtra(Constants.I_USERNAME, UsernameEdit.getText().toString());
                                 startActivity(intent);
 
 

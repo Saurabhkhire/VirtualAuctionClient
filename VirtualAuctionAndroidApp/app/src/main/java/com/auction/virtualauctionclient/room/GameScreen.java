@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.auction.virtualauctionclient.R;
+import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.loginregister.LoginScreen;
 
 public class GameScreen extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         Bundle bundle = getIntent().getExtras();
-        String userName = bundle.getString("Username");
+        String userName = bundle.getString(Constants.I_USERNAME);
 
         ProfileBtn = findViewById(R.id.profile_button);
         IplAuctionBtn = findViewById(R.id.ipl_auction_button);
@@ -32,7 +33,7 @@ public class GameScreen extends AppCompatActivity {
 
 
                 Intent intent = new Intent(GameScreen.this, LoginScreen.class);
-                intent.putExtra("Username", userName);
+                intent.putExtra(Constants.I_USERNAME, userName);
                 startActivity(intent);
 
 
@@ -45,7 +46,7 @@ public class GameScreen extends AppCompatActivity {
 
 
                 Intent intent = new Intent(GameScreen.this, RoomScreen.class);
-                intent.putExtra("Username", userName);
+                intent.putExtra(Constants.I_USERNAME, userName);
                 // start the activity connect to the specified class
                 startActivity(intent);
 
