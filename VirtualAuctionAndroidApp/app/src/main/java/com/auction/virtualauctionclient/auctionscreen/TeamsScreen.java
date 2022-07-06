@@ -1,6 +1,7 @@
 package com.auction.virtualauctionclient.auctionscreen;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,17 +9,13 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.auction.virtualauctionclient.R;
+import com.auction.virtualauctionclient.common.CommonLogic;
 import com.auction.virtualauctionclient.common.Constants;
 
 public class TeamsScreen extends AppCompatActivity  {
 
-    private Button CskBtn,RcbBtn, SrhBtn, DcBtn, MiBtn, RrBtn, KkrBtn, PbksBtn, LsgBtn, GtBtn;
+    private Button CskBtn, RcbBtn, SrhBtn, DcBtn, MiBtn, RrBtn, KkrBtn, PbksBtn, LsgBtn, GtBtn;
 
-   // public SettingsScreen(Context contextForFinish) {
-       //this.contextForFinish = contextForFinish;
-    //}
-
-    // try {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +23,10 @@ public class TeamsScreen extends AppCompatActivity  {
         Bundle bundle = getIntent().getExtras();
         String userName = bundle.getString("Username");
         String roomId = bundle.getString("RoomId");
+        String team = bundle.getString("Team");
+
+        AssetManager assetManager = getResources().getAssets();
+        CommonLogic.setBackgroundImage(team + Constants.PNG_EXT, this.findViewById(android.R.id.content), assetManager);
 
         CskBtn = findViewById(R.id.csk_button);
         RcbBtn = findViewById(R.id.rcb_button);
@@ -38,6 +39,16 @@ public class TeamsScreen extends AppCompatActivity  {
         LsgBtn = findViewById(R.id.lsg_button);
         GtBtn = findViewById(R.id.gt_button);
 
+        CommonLogic.setBackgroundForButtons(team, CskBtn);
+        CommonLogic.setBackgroundForButtons(team, RcbBtn);
+        CommonLogic.setBackgroundForButtons(team, SrhBtn);
+        CommonLogic.setBackgroundForButtons(team, DcBtn);
+        CommonLogic.setBackgroundForButtons(team, MiBtn);
+        CommonLogic.setBackgroundForButtons(team, RrBtn);
+        CommonLogic.setBackgroundForButtons(team, KkrBtn);
+        CommonLogic.setBackgroundForButtons(team, PbksBtn);
+        CommonLogic.setBackgroundForButtons(team, LsgBtn);
+        CommonLogic.setBackgroundForButtons(team, GtBtn);
 
         CskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +184,12 @@ public class TeamsScreen extends AppCompatActivity  {
             }
         });
 
+
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
 
     }
 }

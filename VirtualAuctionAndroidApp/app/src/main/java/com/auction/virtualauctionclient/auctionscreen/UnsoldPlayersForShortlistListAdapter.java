@@ -61,12 +61,14 @@ public class UnsoldPlayersForShortlistListAdapter extends BaseAdapter {
 
         // Set the title and button name
         UnsoldPlayersListTxt.setText(mArrSchoolData.get(position));
+        SelectPlayerBox.setChecked(false);
 
         SelectPlayerBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Integer pos = (Integer) SelectPlayerBox.getTag();
                 if(SelectPlayerBox.isChecked()) {
+
                     modelArrayList.add(mArrSchoolData.get(position));
                 } else {
                     modelArrayList.remove(mArrSchoolData.get(position));
@@ -78,7 +80,6 @@ public class UnsoldPlayersForShortlistListAdapter extends BaseAdapter {
         mAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
 
                 NamesList namesList = new NamesList();
                 namesList.setUsername(userNameStr);

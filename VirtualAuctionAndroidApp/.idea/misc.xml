@@ -3,25 +3,61 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable-v24/rectangle_with_border.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable-v24/rounded_rectangle_button.xml" value="0.234" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable-v24/white_border_rectangle.xml" value="0.243" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/androidapp_background.xml" value="0.153" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/circle.xml" value="0.239" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/image_border.xml" value="0.124" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/rectangle.xml" value="0.123" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/rectangle_border_omit_below.xml" value="0.123" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/drawable/white_border_right.xml" value="0.145" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-land/auction_screen.xml" value="0.2" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/activity_main.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-land/login_register_screen.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-land/total_players_list_screen.xml" value="0.11429832303618712" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-small/activity_main1.xml" value="0.11372381359555365" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-small/login_register_screen.xml" value="0.4" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout-small/login_screen1.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/account_screen.xml" value="0.1931097008159565" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/activity_main1.xml" value="0.1" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/add_players_after_auction_list_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/add_players_after_auction_listview.xml" value="0.22826086956521738" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_break_screen.xml" value="0.1" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_params_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_break_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_params_screen.xml" value="0.4" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_screen.xml" value="0.264" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_settings_screen.xml" value="0.1" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/current_set_players_list_screen.xml" value="0.22826086956521738" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/auction_settings_screen.xml" value="0.4" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/create_private_room_screen.xml" value="0.20534904805077062" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/current_set_players_list_screen.xml" value="0.1" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/current_set_players_listview.xml" value="0.1" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/login_screen.xml" value="0.1" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/register_screen.xml" value="0.1" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/room_screen.xml" value="0.136" />
-        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/room_status_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/game_screen.xml" value="0.29683698296836986" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/generate_otp_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/get_user_by_email_id_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/get_user_by_phone_number_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/join_private_room_screen.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/join_public_room_screen.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/login_register_screen.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/login_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/login_screen1.xml" value="0.4" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/read_user_details_screen.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/register_screen.xml" value="0.4" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/reset_password_screen.xml" value="0.1" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/room_screen.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/room_status_screen.xml" value="0.2" />
         <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/settings_screen.xml" value="0.192481884057971" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/spinner_list.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/team_names.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/team_players_list_screen.xml" value="0.3111940298507463" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/team_players_listview.xml" value="0.264" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/total_players_list_screen.xml" value="0.16799999999999998" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/unsold_player_names_for_shortlist_list_screen.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/unsold_players_list_screen.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/unsold_players_listview.xml" value="0.2" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/update_user_details_screen.xml" value="0.20863616930312098" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/usernames_listview.xml" value="0.176" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/layout/verify_otp_screen.xml" value="0.16" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/mipmap-anydpi-v26/androidapp.xml" value="0.122" />
+        <entry key="..\:/Saurabh/Projects/VirtualAuctionClient/VirtualAuctionAndroidApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.153" />
       </map>
     </option>
   </component>

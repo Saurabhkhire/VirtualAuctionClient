@@ -3,10 +3,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ListView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/AddPlayersAfterAuctionList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/AddPlayersLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F2F2F2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Add Players"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/SelectPlayerTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AddPlayersLabel"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Player"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/PlayerPriceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SelectPlayerTxt"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Price"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/PlayersListTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/SelectPlayerTxt"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/PlayersPriceEdit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/PlayerPriceTxt"
+        android:layout_alignBottom="@+id/PlayersListTxt"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/BuyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PlayersPriceEdit"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:text="Buy"
+        android:textSize="16sp" />
 
 </RelativeLayout>

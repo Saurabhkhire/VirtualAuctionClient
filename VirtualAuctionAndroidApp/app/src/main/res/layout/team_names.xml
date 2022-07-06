@@ -4,105 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
 
     <Button
         android:id="@+id/csk_button"
-        android:inputType="textPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:text="Csk" />
 
     <Button
         android:id="@+id/rcb_button"
-        android:inputType="textPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/csk_button"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
         android:text="Rcb" />
 
     <Button
         android:id="@+id/srh_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/rcb_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Srh" />
 
     <Button
         android:id="@+id/dc_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/srh_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Dc" />
 
     <Button
         android:id="@+id/mi_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/dc_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Mi" />
 
     <Button
         android:id="@+id/rr_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/mi_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Rr" />
 
     <Button
         android:id="@+id/kkr_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/rr_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Kkr" />
 
     <Button
         android:id="@+id/pbks_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/kkr_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Pbks" />
 
     <Button
         android:id="@+id/lsg_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/pbks_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Lsg" />
 
     <Button
         android:id="@+id/gt_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/lsg_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Gt" />
 

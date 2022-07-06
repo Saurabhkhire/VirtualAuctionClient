@@ -67,26 +67,7 @@ public class AddPlayersAfterAuctionListAdapter extends BaseAdapter {
 
                 String getPlayerName =  mArrSchoolData.get(position);
 
-                PlayerName playerName = new PlayerName();
-                playerName.setUsername(userNameStr);
-                playerName.setRoomId(roomIdStr);
-                playerName.setTeam(teamStr);
-                playerName.setPlayerName(getPlayerName);
-                (Client.getClient().addPlayerToTeamAfterAuction("application/json", playerName)).enqueue(new Callback<ResponseMessage>() {
-                    @Override
-                    public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
 
-                        String message = response.body().getMessage();
-
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseMessage> call, Throwable t) {
-                        Log.d("f", t.getMessage());
-                    }
-
-                });
 
 
             }

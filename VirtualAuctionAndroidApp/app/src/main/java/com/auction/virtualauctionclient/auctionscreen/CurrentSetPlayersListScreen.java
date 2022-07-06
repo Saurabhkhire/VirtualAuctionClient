@@ -2,15 +2,21 @@ package com.auction.virtualauctionclient.auctionscreen;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ContentFrameLayout;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.CommonLogic;
 import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.NamesList;
+import com.auction.virtualauctionclient.model.PlayerInfoList;
 import com.auction.virtualauctionclient.model.RoomInfo;
 
 import java.util.ArrayList;
@@ -21,7 +27,16 @@ import retrofit2.Response;
 
 public class CurrentSetPlayersListScreen extends AppCompatActivity {
 
-    private ListView mListview;
+    View topLine;
+    private TextView PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceInLakhsTxt, PriceInCroresTxt;
+    private ArrayList<String> playerNamesList;
+    private ArrayList<String> playerCountryList;
+    private ArrayList<String> playerRoleList;
+    private ArrayList<String> battingStyleList;
+    private ArrayList<String> bowlingStyleList;
+    private ArrayList<String> battingPositionList;
+    private ArrayList<String> basePriceInLakhsList;
+    private ArrayList<String> basePriceInCroresList;
     private ArrayList<String> mArrData;
     private CurrentSetPlayersListAdapter mAdapter;
 
@@ -33,24 +48,46 @@ public class CurrentSetPlayersListScreen extends AppCompatActivity {
         String userName = bundle.getString("Username");
         String roomId = bundle.getString("RoomId");
 
-        mListview = (ListView) findViewById(R.id.CurrentSetPlayersList);
+        PlayerNameTxt = findViewById(R.id.PlayerNameTxt);
+        PlayerCountryTxt = findViewById(R.id.PlayerCountryTxt);
+        PlayerRoleTxt = findViewById(R.id.PlayerRoleTxt);
+        BattingStyleTxt = findViewById(R.id.BattingStyleTxt);
+        BowlingStyleTxt = findViewById(R.id.BowlingStyleTxt);
+        BattingPositionTxt = findViewById(R.id.BattingPositionTxt);
+        PriceInLakhsTxt = findViewById(R.id.PriceinLakhsTxt);
+        PriceInCroresTxt = findViewById(R.id.PriceinCroresTxt);
+        topLine = findViewById(R.id.topLine);
+        ContentFrameLayout contentFrameLayout = this.findViewById(android.R.id.content);
+
+        //mListview = (ListView) findViewById(R.id.CurrentSetPlayersList);
 
         RoomInfo roomInfo = new RoomInfo();
         roomInfo.setUsername(userName);
         roomInfo.setRoomId(roomId);
-        (Client.getClient().getCurrentSetPlayersList("application/json", roomInfo)).enqueue(new Callback<NamesList>() {
+        (Client.getClient().getCurrentSetPlayersList("application/json", roomInfo)).enqueue(new Callback<PlayerInfoList>() {
             @Override
-            public void onResponse(Call<NamesList> call, Response<NamesList> response) {
+            public void onResponse(Call<PlayerInfoList> call, Response<PlayerInfoList> response) {
 
-                mArrData = response.body().getNamesList();
-                mAdapter = new CurrentSetPlayersListAdapter(CurrentSetPlayersListScreen.this, mArrData);
-                mListview.setAdapter(mAdapter);
-                mAdapter.notifyDataSetChanged();
+                playerNamesList = response.body().getPlayerNameList();
+                playerCountryList = response.body().getPlayerCountryList();
+                playerRoleList = response.body().getPlayerRoleList();
+                battingStyleList = response.body().getBattingStyleList();
+                bowlingStyleList = response.body().getBowlingStyleList();
+                battingPositionList = response.body().getBattingPositionList();
+                basePriceInLakhsList = response.body().getPriceinLakhsList();
+                basePriceInCroresList = response.body().getPriceinCroresList();
+                TableLayout prices = (TableLayout)findViewById(R.id.tableL);
+                CommonLogic.setTable(contentFrameLayout, topLine, PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceInLakhsTxt, PriceInCroresTxt , playerNamesList, playerCountryList, playerRoleList, battingStyleList, bowlingStyleList, battingPositionList, basePriceInLakhsList, basePriceInCroresList, prices, CurrentSetPlayersListScreen.this, "normal");
+
+                // mArrData = response.body().getNamesList();
+               // mAdapter = new CurrentSetPlayersListAdapter(CurrentSetPlayersListScreen.this, mArrData);
+               // mListview.setAdapter(mAdapter);
+               // mAdapter.notifyDataSetChanged();
 
             }
 
             @Override
-            public void onFailure(Call<NamesList> call, Throwable t) {
+            public void onFailure(Call<PlayerInfoList> call, Throwable t) {
                 Log.d("f", t.getMessage());
             }
 
@@ -58,6 +95,12 @@ public class CurrentSetPlayersListScreen extends AppCompatActivity {
 
         // Initialize adapter and set adapter to list view
 
+
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
 
     }
 }

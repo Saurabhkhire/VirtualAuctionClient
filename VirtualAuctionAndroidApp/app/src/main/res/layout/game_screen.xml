@@ -4,28 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
 
     <Button
-        android:id="@+id/profile_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="150dp"
+        android:id="@+id/account_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Profile"/>
+        android:text="Account"/>
 
      <Button
         android:id="@+id/ipl_auction_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_button"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@+id/account_button"
         android:ems="10"
         android:text="IPL Auction" />
 

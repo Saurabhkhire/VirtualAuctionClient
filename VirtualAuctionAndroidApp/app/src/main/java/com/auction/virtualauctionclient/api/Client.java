@@ -11,7 +11,7 @@ public class Client {
         // change your base URL
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.32:8080")
+                    .baseUrl("http://192.168.43.221:8080")   // realmi - 192.168.43.221, lenevo - 192.168.1.32
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

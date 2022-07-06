@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.CommonLogic;
 import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.model.RoomInfo;
@@ -28,15 +29,17 @@ public class UsernamesListAdapter extends BaseAdapter {
 
     private String userNameStr;
     private String roomIdStr;
+    private String teamStr;
     private Context mContext;
     private ArrayList<String> mArrSchoolData;
 
-    public UsernamesListAdapter(Context context, ArrayList<String> arrSchoolData, String userName, String roomId) {
+    public UsernamesListAdapter(Context context, ArrayList<String> arrSchoolData, String userName, String roomId, String team) {
         super();
         mContext = context;
         mArrSchoolData = arrSchoolData;
         userNameStr = userName;
         roomIdStr = roomId;
+        teamStr = team;
     }
 
     public int getCount() {
@@ -55,6 +58,7 @@ public class UsernamesListAdapter extends BaseAdapter {
         TextView txtPlayersList = (TextView) view.findViewById(R.id.UsernamesListTxt);
         Button btnAction = (Button) view.findViewById(R.id.MakeHostBtn);
 
+        CommonLogic.setBackgroundForButtons(teamStr, btnAction);
         // Set the title and button name
         txtPlayersList.setText(mArrSchoolData.get(position));
         btnAction.setText("Make Host");

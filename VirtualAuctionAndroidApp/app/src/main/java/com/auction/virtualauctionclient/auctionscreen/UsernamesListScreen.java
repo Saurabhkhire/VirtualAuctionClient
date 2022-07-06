@@ -33,6 +33,7 @@ public class UsernamesListScreen extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String userName = bundle.getString("Username");
         String roomId = bundle.getString("RoomId");
+        String team = bundle.getString("Team");
 
         mListview = (ListView) findViewById(R.id.UsernamesList);
 
@@ -44,7 +45,7 @@ public class UsernamesListScreen extends AppCompatActivity {
             public void onResponse(Call<NamesList> call, Response<NamesList> response) {
 
                 mArrData = response.body().getNamesList();
-                mAdapter = new UsernamesListAdapter(UsernamesListScreen.this, mArrData, userName, roomId);
+                mAdapter = new UsernamesListAdapter(UsernamesListScreen.this, mArrData, userName, roomId, team);
                 mListview.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
 
@@ -59,6 +60,13 @@ public class UsernamesListScreen extends AppCompatActivity {
 
         // Initialize adapter and set adapter to list view
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
 
     }
 }

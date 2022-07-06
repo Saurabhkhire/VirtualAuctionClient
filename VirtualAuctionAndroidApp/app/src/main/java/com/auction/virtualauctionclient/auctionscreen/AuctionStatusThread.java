@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.auction.virtualauctionclient.api.Client;
@@ -17,16 +17,13 @@ import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.PlayerStatus;
 import com.auction.virtualauctionclient.model.Team;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AuctionStatusThread implements Runnable{
 
-    private boolean checkStatus = true;
+    public boolean checkStatus = true;
     private Context context;
     private Context contextForFinish;
     private String roomId;
@@ -36,13 +33,15 @@ public class AuctionStatusThread implements Runnable{
     private int minTotal;
     private int maxTotal;
     private int maxBudget;
+    private ProgressBar LoadingBar;
     private Button BidBtn;
-    private TextView PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceTxt, TimeTxt, CurrentBudgetEdit, HostEdit;
+    private TextView SetNameEdit, PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceTxt, TimeTxt, CurrentBudgetEdit, HostEdit, StatusEdit, PausedEdit;
     private ImageView CurrentBid, TeamNameTxt, PlayerImage1, PlayerImage2;
     private AssetManager assetManager;
 
-    public AuctionStatusThread(ImageView TeamNameTxt, TextView PlayerNameTxt, TextView PlayerCountryTxt, TextView PlayerRoleTxt, TextView BattingStyleTxt, TextView BowlingStyleTxt, TextView BattingPositionTxt, TextView PriceTxt, ImageView CurrentBid, TextView TimeTxt, TextView CurrentBudgetEdit, TextView HostEdit, ImageView PlayerImage1, ImageView PlayerImage2, Button BidBtn, String roomId, String teamName, String userName, int maxForeigners, int minTotal, int maxTotal, int maxBudget, AssetManager assetManager, Context context, Context contextForFinish) {
+    public AuctionStatusThread(ImageView TeamNameTxt, TextView SetNameEdit, TextView PlayerNameTxt, TextView PlayerCountryTxt, TextView PlayerRoleTxt, TextView BattingStyleTxt, TextView BowlingStyleTxt, TextView BattingPositionTxt, TextView PriceTxt, ImageView CurrentBid, TextView TimeTxt, TextView CurrentBudgetEdit, TextView HostEdit, TextView StatusEdit, TextView PausedEdit, ImageView PlayerImage1, ImageView PlayerImage2, Button BidBtn, String roomId, String teamName, String userName, int maxForeigners, int minTotal, int maxTotal, int maxBudget, AssetManager assetManager, Context context, Context contextForFinish, ProgressBar LoadingBar) {
         this.TeamNameTxt = TeamNameTxt;
+        this.SetNameEdit = SetNameEdit;
         this.PlayerNameTxt = PlayerNameTxt;
         this.PlayerCountryTxt = PlayerCountryTxt;
         this.PlayerRoleTxt = PlayerRoleTxt;
@@ -54,6 +53,8 @@ public class AuctionStatusThread implements Runnable{
         this.TimeTxt = TimeTxt;
         this.CurrentBudgetEdit = CurrentBudgetEdit;
         this.HostEdit = HostEdit;
+        this.StatusEdit = StatusEdit;
+        this.PausedEdit = PausedEdit;
         this.PlayerImage1 = PlayerImage1;
         this.PlayerImage2 = PlayerImage2;
         this.BidBtn = BidBtn;
@@ -67,6 +68,7 @@ public class AuctionStatusThread implements Runnable{
         this.assetManager = assetManager;
         this.context = context;
         this.contextForFinish = contextForFinish;
+        this.LoadingBar = LoadingBar;
     }
     @Override
     public void run() {
@@ -89,7 +91,7 @@ public class AuctionStatusThread implements Runnable{
 
                         status[0] = response.body().getRoomStatus();
 
-                        if (status[0].equals("TempPausedForRound2") || status[0].equals("TempPausedForRound3") || status[0].equals("Finished")) {
+                        if (status[0].equals(Constants.I_WAITING_FOR_ROUND2) || status[0].equals(Constants.I_WAITING_FOR_ROUND3) || status[0].equals(Constants.I_FINISHED_STATUS)) {
 
                             checkStatus = false;
 
@@ -97,6 +99,8 @@ public class AuctionStatusThread implements Runnable{
 
                             int price = response.body().getTotalPriceinLakhs();
                             String priceStr = String.valueOf(price);
+                            double priceInCrores = response.body().getTotalPriceInCrores();
+                            String priceInCroresStr = String.format("%.2f", priceInCrores);
                             int time = response.body().getTime();
                             String timeStr = String.valueOf(time);
 
@@ -114,43 +118,82 @@ public class AuctionStatusThread implements Runnable{
                             String foreignersStr = String.valueOf(foreigners);
                             int total = response.body().getTotal();
                             String totalStr = String.valueOf(total);
-                            int budget = response.body().getBudget();
+                            int budget = response.body().getBudgetInLakhs();
                             String budgetStr = String.valueOf(budget);
+                            double budgetInCrores = response.body().getBudgetInCrores();
+                            String budgetInCroresStr =  String.format("%.2f", budgetInCrores);
 
                             String playerCountry = response.body().getPlayerCountry();
                             String playerRole = response.body().getPlayerRole();
+                            String skip = response.body().getSkipType();
 
-                            HostEdit.setText(response.body().getHostName());
+
+                            if(response.body().getHostName().equals(userName)) {
+                                HostEdit.setText("Host");
+                            }
+                            if(status[0].equals(Constants.I_PAUSED_STATUS)) {
+                                PausedEdit.setText("Paused");
+                            } else {
+                                PausedEdit.setText("");
+                            }
+                            SetNameEdit.setText(response.body().getSet().replaceAll("_"," "));
                             PlayerNameTxt.setText(response.body().getPlayerName());
                             PlayerCountryTxt.setText(playerCountry);
                             PlayerRoleTxt.setText(playerRole);
                             BattingStyleTxt.setText(response.body().getBattingStyle());
                             BowlingStyleTxt.setText(response.body().getBowlingStyle());
                             BattingPositionTxt.setText(response.body().getBattingPosition());
-                            PriceTxt.setText(priceStr);
+                            PriceTxt.setText(priceStr + " lakhs \n(" + priceInCroresStr + " crores)");
                             //CurrentBid.setText(response.body().getTeam());
-                            if(!response.body().getTeam().equals("") && response.body().getTeam() != null) {
-                                CommonLogic.setTeamImage(response.body().getTeam(), CurrentBid, assetManager);
+                            if(response.body().getTeam().equals("") || response.body().getTeam() == null) {
+                                CurrentBid.setImageDrawable(null);
+                            } else {
+                                CommonLogic.setTeamImage(response.body().getTeam(), CurrentBid, contextForFinish);
+                            }
+
+                            if(time ==0) {
+                                if (response.body().getTeam().equals("") || response.body().getTeam() == null) {
+                                    StatusEdit.setText("Last Bid : " + response.body().getPlayerName() + " Unsold");
+                                } else {
+                                    StatusEdit.setText("Last Bid : " + response.body().getPlayerName() + " sold to " + response.body().getTeam().toUpperCase() + " for " + priceStr + " lakhs");
+                                }
                             }
 
                             TimeTxt.setText(timeStr);
-                            CurrentBudgetEdit.setText(budgetStr);
-
-                            CommonLogic.setPlayerImage(response.body().getPlayerName(), PlayerImage1, PlayerImage2, assetManager);
+                            CurrentBudgetEdit.setText("Budget: " + budgetStr  + " lakhs (" + budgetInCroresStr + " crores)");
+                            if(response.body().getPlayerImage1Uri().equals("") || response.body().getPlayerImage1Uri() == null) {
+                                PlayerImage1.setImageDrawable(null);
+                            } else {
+                                CommonLogic.setPlayerImage(response.body().getPlayerImage1Uri(), PlayerImage1, contextForFinish);
+                            }
+                            if(response.body().getPlayerImage2Uri().equals("") || response.body().getPlayerImage2Uri() == null) {
+                                PlayerImage2.setImageDrawable(null);
+                            } else {
+                                CommonLogic.setPlayerImage(response.body().getPlayerImage2Uri(), PlayerImage2, contextForFinish);
+                            }
 
                             boolean maxForeignCheck = !playerCountry.equals("India") && foreigners >= maxForeigners;
-                            boolean minBatsmanCheck = !playerRole.equals("Batsman") && batsman == 0 && total == maxTotal -1;
-                            boolean minKeeperCheck = !playerRole.equals("Wicket Keeper") && wicketKeepers == 0 && total == maxTotal -1;
-                            boolean minAllRounderCheck = !playerRole.equals("All Rounder") && allRounders == 0 && total == maxTotal -1;
-                            boolean minFastBowlerCheck = !playerRole.equals("Fast Bowler") && fastBowlers == 0 && total == maxTotal -1;
-                            boolean minSpinBowlerCheck = !playerRole.equals("Spin Bowler") && spinBowlers == 0 && total == maxTotal -1;
-                            boolean playerAccordingToBudgetCheck = price/maxTotal - total <= 1 && price>1;
+                            //boolean minBatsmanCheck = !playerRole.equals("Batsman") && batsman == 0 && total == maxTotal -1;
+                            //boolean minKeeperCheck = !playerRole.equals("Wicket Keeper") && wicketKeepers == 0 && total == maxTotal -1;
+                            //boolean minAllRounderCheck = !playerRole.equals("All Rounder") && allRounders == 0 && total == maxTotal -1;
+                            //boolean minFastBowlerCheck = !playerRole.equals("Fast Bowler") && fastBowlers == 0 && total == maxTotal -1;
+                            //boolean minSpinBowlerCheck = !playerRole.equals("Spin Bowler") && spinBowlers == 0 && total == maxTotal -1;
+                            boolean playerAccordingToBudgetCheck = (budget - price) < (minTotal - total - 1);
+                            boolean playerAccordingToBudgetCheckTeam = (budget - price) == (minTotal - total - 1) && (!response.body().getTeam().equals(""));
+                            boolean skipCheck = (skip.equals(Constants.I_SKIP_CURRENT_SET) && time==0) || (skip.equals(Constants.I_SKIP_ENTIRE_ROUND)  && time==0);
 
-                            if (time == 0 || price > budget || maxForeignCheck || total >= maxTotal || minBatsmanCheck || minKeeperCheck || minAllRounderCheck || minFastBowlerCheck || minSpinBowlerCheck || playerAccordingToBudgetCheck) {
+                            if (time == 0 || price > budget || maxForeignCheck || total >= maxTotal || playerAccordingToBudgetCheck || playerAccordingToBudgetCheckTeam) {
                                 BidBtn.setEnabled(false);
                             } else {
                                 BidBtn.setEnabled(true);
                             }
+
+                                if (skipCheck) {
+                                    LoadingBar.setVisibility(View.VISIBLE);
+                                } else {
+                                    LoadingBar.setVisibility(View.INVISIBLE);
+                                }
+
                         }
 
                     }
@@ -181,7 +224,7 @@ public class AuctionStatusThread implements Runnable{
 
         }
 
-        if(status[0].equals("TempPausedForRound2") || status[0].equals("TempPausedForRound3") || status[0].equals("Finished")) {
+        if(status[0].equals(Constants.I_WAITING_FOR_ROUND2) || status[0].equals(Constants.I_WAITING_FOR_ROUND3) || status[0].equals(Constants.I_FINISHED_STATUS)) {
 
             Intent intent = new Intent(context, AuctionBreakScreen.class);
             intent.putExtra("Username", userName);

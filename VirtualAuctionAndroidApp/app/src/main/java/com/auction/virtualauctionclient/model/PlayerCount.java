@@ -2,7 +2,8 @@ package com.auction.virtualauctionclient.model;
 
 public class PlayerCount extends PlayerInfo{
 
-	private int budget;
+	private int budgetInLakhs;
+	private double budgetInCrores;
 	private int batsman;
 	private int wicketKeepers;
 	private int allRounders;
@@ -11,12 +12,20 @@ public class PlayerCount extends PlayerInfo{
 	private int foreigners;
 	private int total;
 
-	public int getBudget() {
-		return budget;
+	public int getBudgetInLakhs() {
+		return budgetInLakhs;
 	}
 
-	public void setBudget(int budget) {
-		this.budget = budget;
+	public void setBudgetInLakhs(int budgetInLakhs) {
+		this.budgetInLakhs = budgetInLakhs;
+	}
+
+	public double getBudgetInCrores() {
+		return budgetInCrores;
+	}
+
+	public void setBudgetInCrores(double budgetInCrores) {
+		this.budgetInCrores = budgetInCrores;
 	}
 
 	public int getBatsman() {

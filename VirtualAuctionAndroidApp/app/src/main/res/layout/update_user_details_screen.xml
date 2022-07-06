@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginregister.MainActivity">
+
+
+    <TextView
+        android:id="@+id/RegisterLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F2F2F2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Update"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TableRow
+        android:id="@+id/UsernameDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/RegisterLabel"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+        <TextView
+            android:id="@+id/UsernameTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="Username"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/UsernameEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/PasswordDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/UsernameDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+        <TextView
+            android:id="@+id/PasswordTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="Password"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/PasswordEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/VerifyPasswordDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/PasswordDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+        <TextView
+            android:id="@+id/VerifyPasswordTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="Verify Password"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/VerifyPasswordEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/EmailIdDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/VerifyPasswordDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+        <TextView
+            android:id="@+id/EmailIdTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="Password"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/EmailIdEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/EmailIdDesign"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Update"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

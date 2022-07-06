@@ -4,32 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
-
-    <TextView
-        android:id="@+id/RoomIdEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle"
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="" />
 
     <TextView
+        android:id="@+id/RoomIdEdit"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/settings_button"
+        android:background="@drawable/rectangle"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:text="" />
+
+    <TextView
         android:id="@+id/HostText"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_toEndOf="@+id/RoomIdEdit"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/PausedEdit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:background="@drawable/rectangle"
         android:layout_alignBaseline="@+id/RoomIdEdit"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="220dp"
         android:layout_marginTop="5dp"
         android:text="" />
 
     <TextView
         android:id="@+id/TeamNameBorder"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
         android:layout_marginStart="360dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle"
@@ -41,15 +63,15 @@
 
     <ImageView
         android:id="@+id/TeamName"
-        android:layout_width="58dp"
-        android:layout_height="28dp"
+        android:layout_width="78dp"
+        android:layout_height="48dp"
         android:layout_marginStart="361dp"
         android:layout_marginTop="6dp"
-        android:background="#F2F2F2"
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
+        android:background="#F2F2F2"
         android:gravity="center"
         android:inputType="textPersonName"
+        android:scaleType="fitCenter"
         android:text="" />
 
     <TableLayout
@@ -60,8 +82,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="5dp">
 
+        <TableRow android:background="#000000">
+
+            <TextView
+                android:id="@+id/SetNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:text="Set Name"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/SetNameEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2"
+                android:layout_marginTop="1dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textSize="16sp" />
+
+        </TableRow>
     <TableRow android:background="#000000">
 
     <TextView
@@ -269,57 +317,31 @@
         android:text=""
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/PriceTxt"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle"
-        android:layout_toRightOf="@+id/PlayerInfoTable"
-        android:layout_below="@+id/CurrentBidEditBorder"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Price"
-        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/PriceEdit"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:background="@drawable/rectangle_border_omit_below"
-        android:layout_toRightOf="@+id/PlayerInfoTable"
-        android:layout_below="@+id/PriceTxt"
+        android:layout_below="@+id/CurrentBidEditBorder"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="0dp"
+        android:layout_toRightOf="@+id/PlayerInfoTable"
+        android:background="@drawable/rectangle_border_omit_below"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
         android:textSize="16sp" />
 
-
-    <TextView
-        android:id="@+id/BudgetTxt"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle"
-        android:layout_below="@+id/PlayerInfoTable"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Current Budget"
-        android:textSize="16sp" />
-
-
     <TextView
         android:id="@+id/BudgetEdit"
-        android:layout_width="140dp"
+        android:layout_width="250dp"
         android:layout_height="30dp"
-        android:background="@drawable/rectangle_border_omit_below"
-        android:layout_below="@+id/BudgetTxt"
-        android:layout_marginStart="20dp"
+        android:layout_below="@+id/PlayerInfoTable"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle"
         android:ems="10"
         android:text=""
         android:textSize="16sp" />
@@ -386,30 +408,44 @@
         android:text=""
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/StatusEdit"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/BudgetEdit"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle"
+        android:ems="10"
+        android:text=""
+        android:textSize="16sp" />
+
 
     <TextView
         android:id="@+id/TimeEdit"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/circle"
         android:layout_below="@+id/PlayerInfoTable"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_toRightOf="@+id/BudgetEdit"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/StatusEdit"
+        android:background="@drawable/circle"
         android:ems="10"
         android:text=""
-        android:textStyle="bold"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/teams_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/BudgetEdit"
+        android:layout_below="@+id/bid_button"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/TimeEdit"
         android:inputType="textPersonName"
         android:text="Teams" />
 
@@ -417,25 +453,22 @@
         android:id="@+id/bid_button"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_toRightOf="@+id/TimeEdit"
         android:layout_below="@+id/PriceEdit"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/TimeEdit"
         android:inputType="textPersonName"
         android:text="BID" />
 
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/teams_button"
-        android:layout_below="@+id/BudgetEdit"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:inputType="textPersonName"
-        android:text="Settings" />
+
+    <ProgressBar
+        android:id="@+id/LoadingBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="360dp"
+        android:layout_marginTop="100dp"
+        android:ems="10" />
 
 
 </RelativeLayout>

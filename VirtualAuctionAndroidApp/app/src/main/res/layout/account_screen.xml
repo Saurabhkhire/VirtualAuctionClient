@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginregister.MainActivity">
+
+
+    <Button
+        android:id="@+id/read_user_details_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:ems="10"
+        android:text="Read User Details"/>
+
+    <Button
+        android:id="@+id/update_user_details_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@+id/read_user_details_button"
+        android:ems="10"
+        android:text="Update User Details" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@+id/update_user_details_button"
+        android:ems="10"
+        android:text="Log Out" />
+
+    <Button
+        android:id="@+id/delete_user_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@+id/logout_button"
+        android:ems="10"
+        android:text="Delete User" />
+
+
+</RelativeLayout>

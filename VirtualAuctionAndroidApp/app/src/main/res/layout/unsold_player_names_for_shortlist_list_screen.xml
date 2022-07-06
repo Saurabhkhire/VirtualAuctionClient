@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -12,11 +12,68 @@
         android:layout_marginTop="5dp"
         android:text="Add Players" />
 
-    <ListView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/UnsoldPlayerNamesList"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"/>
+        android:layout_below="@+id/add_button"
+        android:padding="10px" >
 
-</RelativeLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableL">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp">
+
+
+                <TextView
+                    android:id="@+id/PlayerNameTxt"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rectangle"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center_horizontal"
+                    android:text="Player Name"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/PriceTxt"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBaseline="@+id/PlayerNameTxt"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/rectangle"
+                    android:layout_toEndOf="@+id/PlayerNameTxt"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Base Price"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/AddCheck"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBaseline="@+id/PlayerNameTxt"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/rectangle"
+                    android:layout_toEndOf="@+id/PriceTxt"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=" "
+                    android:textSize="16sp" />
+
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+</TableLayout>

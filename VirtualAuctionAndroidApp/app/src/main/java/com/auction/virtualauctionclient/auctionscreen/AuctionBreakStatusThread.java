@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class AuctionBreakStatusThread implements Runnable{
 
-    private boolean checkStatus = true;
+    public boolean checkStatus = true;
     private Context context;
     private Context contextForFinish;
     private String roomId;
@@ -29,11 +29,12 @@ public class AuctionBreakStatusThread implements Runnable{
     private int minTotal;
     private int maxTotal;
     private int maxBudget;
-    private TextView HostEdit;
+    private TextView HostEdit, MinBreakTime;
     private Button ContinueBtn;
 
-    public AuctionBreakStatusThread(TextView HostEdit, Button ContinueBtn, String roomId, String teamName, String userName, int maxForeigners, int minTotal, int maxTotal, int maxBudget, Context context, Context contextForFinish) {
+    public AuctionBreakStatusThread(TextView HostEdit, TextView MinBreakTime, Button ContinueBtn, String roomId, String teamName, String userName, int maxForeigners, int minTotal, int maxTotal, int maxBudget, Context context, Context contextForFinish) {
         this.HostEdit = HostEdit;
+        this.MinBreakTime = MinBreakTime;
         this.ContinueBtn = ContinueBtn;
         this.roomId = roomId;
         this.teamName = teamName;
@@ -64,20 +65,32 @@ public class AuctionBreakStatusThread implements Runnable{
                         //Log.d("responseBodyGET", response.body().toString());
 
                         status[0] = response.body().getRoomStatus();
+                        int minBreakTime = response.body().getAuctionBreakMinTime();
 
-                        if (status[0].equals("TempPausedForRound2") || status[0].equals("TempPausedForRound3") || status[0].equals("Finished")) {
+                        long minutes = (minBreakTime / 1000) / 60;
+                        long seconds = (minBreakTime / 1000) % 60;
+                        MinBreakTime.setText(String.valueOf(minutes) + ":" + String.valueOf(seconds));
+
+                        if (status[0].equals(Constants.I_ONGOING_STATUS)) {
 
                             checkStatus = false;
 
                         } else {
 
-                            HostEdit.setText(response.body().getHostName());
+                            if (response.body().getHostName().equals(userName)) {
 
-                            if (response.body().getHostName().equals(Constants.I_HOST)) {
+                                if(minBreakTime==0) {
 
-                                ContinueBtn.setEnabled(true);
+                                    ContinueBtn.setEnabled(true);
+                                } else {
+
+                                    ContinueBtn.setEnabled(false);
+
+                                }
+                                HostEdit.setText("Host");
                             } else {
                                 ContinueBtn.setEnabled(false);
+                                HostEdit.setText("");
                             }
                         }
 
@@ -119,6 +132,7 @@ public class AuctionBreakStatusThread implements Runnable{
             intent.putExtra("MinTotal", minTotal);
             intent.putExtra("MaxTotal", maxTotal);
             intent.putExtra("MaxBudget", maxBudget);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
 
             ((Activity)contextForFinish).finish();

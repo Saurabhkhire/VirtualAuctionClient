@@ -2,13 +2,18 @@ package com.auction.virtualauctionclient.auctionscreen;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ContentFrameLayout;
 
 import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
+import com.auction.virtualauctionclient.common.CommonLogic;
 import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.PlayerInfoList;
 import com.auction.virtualauctionclient.model.RoomInfo;
@@ -21,6 +26,8 @@ import retrofit2.Response;
 
 public class UnsoldPlayersListScreen extends AppCompatActivity {
 
+    View topLine;
+    private TextView PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceInLakhsTxt, PriceInCroresTxt;
     private ListView mListview;
     private ArrayList<String> playerNamesList;
     private ArrayList<String> playerCountryList;
@@ -32,6 +39,8 @@ public class UnsoldPlayersListScreen extends AppCompatActivity {
     private ArrayList<String> basePriceInCroresList;
     private UnsoldPlayersListAdapter mAdapter;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +49,16 @@ public class UnsoldPlayersListScreen extends AppCompatActivity {
         String userName = bundle.getString("Username");
         String roomId = bundle.getString("RoomId");
 
-        mListview = findViewById(R.id.ListViewofUnsoldPlayers);
+        PlayerNameTxt = findViewById(R.id.PlayerNameTxt);
+        PlayerCountryTxt = findViewById(R.id.PlayerCountryTxt);
+        PlayerRoleTxt = findViewById(R.id.PlayerRoleTxt);
+        BattingStyleTxt = findViewById(R.id.BattingStyleTxt);
+        BowlingStyleTxt = findViewById(R.id.BowlingStyleTxt);
+        BattingPositionTxt = findViewById(R.id.BattingPositionTxt);
+        PriceInLakhsTxt = findViewById(R.id.PriceinLakhsTxt);
+        PriceInCroresTxt = findViewById(R.id.PriceinCroresTxt);
+        topLine = findViewById(R.id.topLine);
+        ContentFrameLayout contentFrameLayout = this.findViewById(android.R.id.content);
 
         RoomInfo roomInfo = new RoomInfo();
         roomInfo.setUsername(userName);
@@ -57,9 +75,13 @@ public class UnsoldPlayersListScreen extends AppCompatActivity {
                 battingPositionList = response.body().getBattingPositionList();
                 basePriceInLakhsList = response.body().getPriceinLakhsList();
                 basePriceInCroresList = response.body().getPriceinCroresList();
-                mAdapter = new UnsoldPlayersListAdapter(UnsoldPlayersListScreen.this, playerNamesList, playerCountryList, playerRoleList, battingStyleList, bowlingStyleList, battingPositionList, basePriceInLakhsList, basePriceInCroresList, mListview);
-                mListview.setAdapter(mAdapter);
-                mAdapter.notifyDataSetChanged();
+
+                TableLayout prices = (TableLayout)findViewById(R.id.tableL);
+                CommonLogic.setTable(contentFrameLayout, topLine, PlayerNameTxt, PlayerCountryTxt, PlayerRoleTxt, BattingStyleTxt, BowlingStyleTxt, BattingPositionTxt, PriceInLakhsTxt, PriceInCroresTxt, playerNamesList, playerCountryList, playerRoleList, battingStyleList, bowlingStyleList, battingPositionList, basePriceInLakhsList, basePriceInCroresList, prices, UnsoldPlayersListScreen.this, "normal");
+
+                //mAdapter = new UnsoldPlayersListAdapter(UnsoldPlayersListScreen.this, playerNamesList, playerCountryList, playerRoleList, battingStyleList, bowlingStyleList, battingPositionList, basePriceInLakhsList, basePriceInCroresList, mListview);
+                //mListview.setAdapter(mAdapter);
+                //mAdapter.notifyDataSetChanged();
 
             }
 
@@ -74,6 +96,13 @@ public class UnsoldPlayersListScreen extends AppCompatActivity {
 
         // Initialize adapter and set adapter to list view
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
 
     }
 }

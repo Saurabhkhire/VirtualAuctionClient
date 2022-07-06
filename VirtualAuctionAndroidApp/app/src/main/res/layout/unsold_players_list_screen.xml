@@ -1,18 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
-    <ListView
-        android:id="@+id/ListViewofUnsoldPlayers"
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="0dp"
-        android:text="" />
+        android:padding="10px" >
 
-</RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10px" >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tableL">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp">
+
+
+                    <TextView
+                        android:id="@+id/PlayerNameTxt"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center_horizontal"
+                        android:text="Player Name"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/PlayerCountryTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:layout_toEndOf="@+id/PlayerNameTxt"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Player Country"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/PlayerRoleTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:layout_toEndOf="@+id/PlayerCountryTxt"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Player Role"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/BattingStyleTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_toEndOf="@+id/PlayerRoleTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Batting Style"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/BowlingStyleTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_toEndOf="@+id/BatingStyleTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Bowling Style"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/BattingPositionTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_toEndOf="@+id/BowlingStyleTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Batting Position"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/PriceinLakhsTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_toEndOf="@+id/BattingPositionTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Price (In Lakhs)"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/PriceinCroresTxt"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PlayerNameTxt"
+                        android:layout_toEndOf="@+id/PriceinLakhsTxt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginRight="21dp"
+                        android:gravity="center_horizontal"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Price (In Crores)"
+                        android:textSize="16sp" />
+
+                </TableRow>
+
+                <View
+                    android:id="@+id/topLine"
+                    android:layout_width="1000dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/white" />
+
+
+
+            </TableLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+
+
+</TableLayout>

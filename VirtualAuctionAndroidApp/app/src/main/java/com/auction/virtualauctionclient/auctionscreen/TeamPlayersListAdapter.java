@@ -44,11 +44,15 @@ public class TeamPlayersListAdapter extends BaseAdapter {
         return mPlayerNamesList.size();
     }
 
+
     // getView method is called for each item of ListView
     public View getView(int position, View view, ViewGroup parent) {
         // inflate the layout for each item of listView
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.team_players_listview, parent, false);
+        view = inflater.inflate(R.layout.team_players_listview, parent, true);
+        //ViewGroup.LayoutParams params = view.getLayoutParams();
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(200, 100);
+        view.setLayoutParams(params);
 
 
         // get the reference of textView and button

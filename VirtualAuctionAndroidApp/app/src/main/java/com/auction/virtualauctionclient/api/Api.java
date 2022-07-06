@@ -4,6 +4,7 @@ import com.auction.virtualauctionclient.model.AuctionParams;
 import com.auction.virtualauctionclient.model.Bid;
 import com.auction.virtualauctionclient.model.NamesList;
 import com.auction.virtualauctionclient.model.Login;
+import com.auction.virtualauctionclient.model.OtpInfo;
 import com.auction.virtualauctionclient.model.PlayerInfoList;
 import com.auction.virtualauctionclient.model.PlayerName;
 import com.auction.virtualauctionclient.model.PlayerStatus;
@@ -12,8 +13,8 @@ import com.auction.virtualauctionclient.model.ResponseMessage;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.RoomStatus;
 import com.auction.virtualauctionclient.model.RoomStatusResponse;
-import com.auction.virtualauctionclient.model.SkipInfo;
 import com.auction.virtualauctionclient.model.Team;
+import com.auction.virtualauctionclient.model.UpdateDetails;
 import com.auction.virtualauctionclient.model.Username;
 
 import retrofit2.Call;
@@ -26,19 +27,43 @@ public interface Api {
 
     @POST("/login/")
         // API's endpoints
-    Call<ResponseMessage> login(@Header("Content-Type") String content, @Body Login login);
+    Call<Register> login(@Header("Content-Type") String content, @Body Login login);
 
     @POST("/register/")
         // API's endpoints
     Call<ResponseMessage> register(@Header("Content-Type") String content, @Body Register register);
 
+    @POST("/updateuserdetails/")
+        // API's endpoints
+    Call<ResponseMessage> updateUserDetails(@Header("Content-Type") String content, @Body UpdateDetails updateDetails);
+
+    @POST("/deleteuser/")
+        // API's endpoints
+    Call<ResponseMessage> deleteUser(@Header("Content-Type") String content, @Body Login login);
+
+    @POST("/getuserbyphonenumber/")
+        // API's endpoints
+    Call<Username> getUserByPhoneNumber(@Header("Content-Type") String content, @Body Register register);
+
+    @POST("/generateotp/")
+        // API's endpoints
+    Call<ResponseMessage> generateOtp(@Header("Content-Type") String content, @Body OtpInfo otpInfo);
+
+    @POST("/verifyotp/")
+        // API's endpoints
+    Call<ResponseMessage> verifyOtp(@Header("Content-Type") String content, @Body OtpInfo otpInfo);
+
+    @POST("/resetpassword/")
+        // API's endpoints
+    Call<ResponseMessage> resetPassword(@Header("Content-Type") String content, @Body Login login);
+
     @POST("/createroom/")
         // API's endpoints
-    Call<RoomInfo> createRoom(@Header("Content-Type") String content, @Body Username username);
+    Call<RoomInfo> createRoom(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
 
     @POST("/joinroom/")
         // API's endpoints
-    Call<RoomStatus> joinRoom(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
+    Call<RoomStatusResponse> joinRoom(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
 
     @POST("/leaveroom/")
         // API's endpoints
@@ -62,7 +87,7 @@ public interface Api {
 
     @POST("/skipsets/")
         // API's endpoints
-    Call<ResponseMessage> skipSets(@Header("Content-Type") String content, @Body SkipInfo skipInfo);
+    Call<ResponseMessage> skipSets(@Header("Content-Type") String content, @Body RoomStatus roomStatus);
 
     @POST("/pauseauction/")
         // API's endpoints
@@ -91,7 +116,7 @@ public interface Api {
 
     @POST("/getunsoldplayerslist/")
         // API's endpoints
-    Call<NamesList> getUnsoldPlayers(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
+    Call<NamesList> getUnsoldPlayers(@Header("Content-Type") String content, @Body Team team);
 
     @POST("/addunsoldplayers/")
         // API's endpoints
@@ -103,7 +128,7 @@ public interface Api {
 
     @POST("/getcurrentsetplayerslist/")
         // API's endpoints
-    Call<NamesList> getCurrentSetPlayersList(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
+    Call<PlayerInfoList> getCurrentSetPlayersList(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
 
     @POST("/gettotalunsoldplayerslist/")
         // API's endpoints
@@ -113,7 +138,15 @@ public interface Api {
         // API's endpoints
     Call<PlayerInfoList> getTeamPlayersList(@Header("Content-Type") String content, @Body Team team);
 
-    @POST("/addplayertoteamafterauction")
+    @POST("/addplayertoteamafterauction/")
         // API's endpoints
     Call<ResponseMessage> addPlayerToTeamAfterAuction(@Header("Content-Type") String content, @Body PlayerName playerName);
+
+    @POST("/gettotalplayerslist/")
+        // API's endpoints
+    Call<PlayerInfoList> getTotalPlayersList(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
+
+    @POST("/getplayerteam")
+        // API's endpoints
+    Call<ResponseMessage> getPlayerTeam(@Header("Content-Type") String content, @Body RoomInfo roomInfo);
 }

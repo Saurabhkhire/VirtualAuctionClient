@@ -13,7 +13,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name="com.auction.virtualauctionclient.MainActivity"
+            android:name="com.auction.virtualauctionclient.loginregister.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.LoginRegisterScreen"
+            android:exported="true"
+            />
         <activity
             android:name="com.auction.virtualauctionclient.loginregister.LoginScreen"
             android:exported="true"
@@ -30,11 +34,51 @@
             android:exported="true"
             />
         <activity
+            android:name="com.auction.virtualauctionclient.accountscreen.AccountScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.UpdateUserDetailsScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.accountscreen.ReadUserDetailsScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.GetUserByEmailIdScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.GenerateOtpScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.accountscreen.VerifyOtpScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.loginregister.ResetPasswordScreen"
+            android:exported="true"
+            />
+        <activity
             android:name="com.auction.virtualauctionclient.room.GameScreen"
             android:exported="true"
             />
         <activity
             android:name="com.auction.virtualauctionclient.room.RoomScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.CreatePrivateRoomScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.JoinPublicRoomScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.room.JoinPrivateRoomScreen"
             android:exported="true"
             />
         <activity
@@ -80,6 +124,18 @@
             />
         <activity
             android:name="com.auction.virtualauctionclient.auctionscreen.AuctionParamsScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.CurrentSetPlayersListScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.AddPlayersAfterAuctionListScreen"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.auction.virtualauctionclient.auctionscreen.TotalPlayersListScreen"
             android:exported="true"
             />
     </application>

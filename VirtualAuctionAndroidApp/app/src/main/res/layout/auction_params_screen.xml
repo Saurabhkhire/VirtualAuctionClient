@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
 
     <TextView
@@ -20,117 +20,148 @@
         android:inputType="textPersonName"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/MaxForeignersTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TableLayout
+        android:id="@+id/PlayerInfoTable"
+        android:background="#000000"
         android:layout_below="@+id/AuctionParamsLabel"
-        android:background="#F2F2F2"
-        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Username"
-        android:textSize="16sp" />
+        android:layout_marginTop="5dp">
 
-    <TextView
-        android:id="@+id/MinTotalTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MaxForeignersTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Password" />
 
-    <TextView
-        android:id="@+id/MaxTotalTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MinTotalTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Email Id" />
+        <TableRow >
 
-    <TextView
-        android:id="@+id/MaxBudgetTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MaxTotalTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Email Id" />
+            <TextView
+                android:id="@+id/MaxForeignersTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:text="MaxForeigners"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/MaxForeignersEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MaxForeignersTxt"
-        android:layout_alignBottom="@+id/AuctionParamsLabel"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:textSize="16sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""/>
+            <TextView
+                android:id="@+id/MaxForeignersEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/MinTotalEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MinTotalTxt"
-        android:layout_alignBottom="@+id/MaxForeignersTxt"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="16sp" />
+        </TableRow>
+        <TableRow >
 
-    <TextView
-        android:id="@+id/MaxTotalEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MaxTotalTxt"
-        android:layout_alignBottom="@+id/MinTotalEdit"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/MinTotalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:text="MinTotal"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/MaxBudgetEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MaxBudgetTxt"
-        android:layout_alignBottom="@+id/MaxTotalEdit"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/MinTotalEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </TableRow>
+        <TableRow >
+
+            <TextView
+                android:id="@+id/MaxTotalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:text="MaxTotal"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/MaxTotalEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+        <TableRow >
+            <TextView
+                android:id="@+id/MaxBudgetTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:text="MaxBudget"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/MaxBudgetEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow >
+            <TextView
+                android:id="@+id/MaxBudgetCroresTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/MaxBudgetCroresEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+    </TableLayout>
 
 
 </RelativeLayout>

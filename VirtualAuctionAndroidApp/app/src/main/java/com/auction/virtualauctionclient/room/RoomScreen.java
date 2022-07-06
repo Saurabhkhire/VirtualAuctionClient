@@ -1,6 +1,7 @@
 package com.auction.virtualauctionclient.room;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,6 +16,7 @@ import com.auction.virtualauctionclient.R;
 import com.auction.virtualauctionclient.api.Client;
 import com.auction.virtualauctionclient.auctionscreen.AuctionBreakScreen;
 import com.auction.virtualauctionclient.auctionscreen.AuctionScreen;
+import com.auction.virtualauctionclient.common.CommonLogic;
 import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.RoomStatus;
@@ -27,7 +29,7 @@ import retrofit2.Response;
 
 public class RoomScreen extends AppCompatActivity {
 
-    private Button CreateRoomBtn, JoinRoomBtn;
+    private Button CreatePublicRoomBtn, CreatePrivateRoomBtn, JoinPublicRoomBtn, JoinPrivateRoomBtn, JoinRandomRoomBtn;
     private EditText RoomIdEdit;
 
     // try {
@@ -38,20 +40,33 @@ public class RoomScreen extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String userName = bundle.getString(Constants.I_USERNAME);
 
-        CreateRoomBtn = findViewById(R.id.create_room_button);
-        JoinRoomBtn = findViewById(R.id.join_room_button);
+        AssetManager assetManager = getResources().getAssets();
+        CommonLogic.setBackgroundImage(Constants.GAME_BACKGROUND, this.findViewById(android.R.id.content), assetManager);
+
+        CreatePublicRoomBtn = findViewById(R.id.create_public_room_button);
+        CreatePrivateRoomBtn = findViewById(R.id.create_private_room_button);
+        JoinPublicRoomBtn = findViewById(R.id.join_public_room_button);
+        JoinPrivateRoomBtn = findViewById(R.id.join_private_room_button);
+        JoinRandomRoomBtn = findViewById(R.id.join_random_room_button);
         RoomIdEdit = findViewById(R.id.RoomIdEdit);
 
+        CommonLogic.setBackgroundForButtons(Constants.BUTTON_BACKGROUND1, CreatePublicRoomBtn);
+        CommonLogic.setBackgroundForButtons(Constants.BUTTON_BACKGROUND1, CreatePrivateRoomBtn);
+        CommonLogic.setBackgroundForButtons(Constants.BUTTON_BACKGROUND1, JoinPublicRoomBtn);
+        CommonLogic.setBackgroundForButtons(Constants.BUTTON_BACKGROUND1, JoinPrivateRoomBtn);
+        CommonLogic.setBackgroundForButtons(Constants.BUTTON_BACKGROUND1, JoinRandomRoomBtn);
+
         // below line is to add on click listener for our add course button.
-        CreateRoomBtn.setOnClickListener(new View.OnClickListener() {
+        CreatePublicRoomBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Username username = new Username();
-                username.setUsername(userName);
+                RoomInfo roomInfo = new RoomInfo();
+                roomInfo.setUsername(userName);
+                roomInfo.setVisibility("Public");
 
                 try {
-                (Client.getClient().createRoom("application/json", username)).enqueue(new Callback<RoomInfo>() {
+                (Client.getClient().createRoom("application/json", roomInfo)).enqueue(new Callback<RoomInfo>() {
                     @Override
                     public void onResponse(Call<RoomInfo> call, Response<RoomInfo> response) {
 
@@ -92,36 +107,71 @@ public class RoomScreen extends AppCompatActivity {
             }
         });
 
-        JoinRoomBtn.setOnClickListener(new View.OnClickListener() {
+        CreatePrivateRoomBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final String[] status = {""};
+                Intent intent = new Intent(RoomScreen.this, CreatePrivateRoomScreen.class);
+                intent.putExtra("Username", userName);
+                startActivity(intent);
+
+
+            }
+        });
+
+        JoinPublicRoomBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(RoomScreen.this, JoinPublicRoomScreen.class);
+                intent.putExtra("Username", userName);
+                startActivity(intent);
+
+
+            }
+        });
+
+        JoinPrivateRoomBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(RoomScreen.this, JoinPrivateRoomScreen.class);
+                intent.putExtra("Username", userName);
+                startActivity(intent);
+
+
+            }
+        });
+
+        JoinRandomRoomBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                 RoomInfo roomInfo = new RoomInfo();
                 roomInfo.setUsername(userName);
                 roomInfo.setRoomId(RoomIdEdit.getText().toString());
+                roomInfo.setVisibility("Public");
 
                 try {
-                (Client.getClient().joinRoom("application/json", roomInfo)).enqueue(new Callback<RoomStatus>() {
+                (Client.getClient().joinRoom("application/json", roomInfo)).enqueue(new Callback<RoomStatusResponse>() {
                     @Override
-                    public void onResponse(Call<RoomStatus> call, Response<RoomStatus> response) {
+                    public void onResponse(Call<RoomStatusResponse> call, Response<RoomStatusResponse> response) {
 
                         String message = response.body().getMessage();
-                        String status = response.body().getRoomStatus();
+                        //String status = response.body().getRoomStatus();
+                        String roomId = response.body().getRoomId();
 
 
                         if(message.equals(Constants.OK_MESSAGE)) {
 
-                            if (status.equals(Constants.I_HALT_STATUS) || status.equals(Constants.I_START_STATUS)) {
 
                                 Intent intent = new Intent(RoomScreen.this, RoomStatusScreen.class);
                                 intent.putExtra("Username", userName);
-                                intent.putExtra("RoomId", RoomIdEdit.getText().toString());
-                                intent.putExtra("RoomStatus", status);
+                                intent.putExtra("RoomId", roomId);
+                                intent.putExtra("RoomStatus", "Start");
                                 startActivity(intent);
 
-                            }
+
                         } else {
 
                             Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
@@ -134,7 +184,7 @@ public class RoomScreen extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<RoomStatus> call, Throwable t) {
+                    public void onFailure(Call<RoomStatusResponse> call, Throwable t) {
                         Log.d("f", t.getMessage());
                     }
 
@@ -144,57 +194,14 @@ public class RoomScreen extends AppCompatActivity {
                     ex.printStackTrace();
                 }
 
-                try {
-
-                     (Client.getClient().roomStatus("application/json", roomInfo)).enqueue(new Callback<RoomStatusResponse>() {
-                        @Override
-                        public void onResponse(Call<RoomStatusResponse> call, Response<RoomStatusResponse> response) {
-                            //Log.d("responseBodyGET", response.body().toString());
-                            String message = response.body().getMessage();
-                            String team = response.body().getTeam();
-                            String status = response.body().getRoomStatus();
-                            int maxForeigners = response.body().getMaxForeigners();
-                            int minTotal = response.body().getMinTotal();
-                            int maxTotal = response.body().getMaxTotal();
-                            int maxBudget = response.body().getMaxBudget();
-
-                            Intent intent = new Intent(RoomScreen.this, AuctionScreen.class);;
-
-                            if(message.equals(Constants.OK_MESSAGE)) {
-
-                            if(status.equals(Constants.I_ONGOING_STATUS) || status.equals(Constants.I_PAUSED_STATUS) || status.equals(Constants.I_WAITING_FOR_ROUND2) || status.equals(Constants.I_WAITING_FOR_ROUND3)) {
-
-                                if (status.equals(Constants.I_WAITING_FOR_ROUND2) || status.equals(Constants.I_WAITING_FOR_ROUND3)) {
-
-                                    intent = new Intent(RoomScreen.this, AuctionBreakScreen.class);
-                                    intent.putExtra("RoomStatus", status);
-
-                                }
-                                intent.putExtra("Username", userName);
-                                intent.putExtra("RoomId", RoomIdEdit.getText().toString());
-                                intent.putExtra("Team", team);
-                                intent.putExtra("MaxForeigners", maxForeigners);
-                                intent.putExtra("MinTotal", minTotal);
-                                intent.putExtra("MaxTotal", maxTotal);
-                                intent.putExtra("MaxBudget", maxBudget);
-                                startActivity(intent);
-                            }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<RoomStatusResponse> call, Throwable t) {
-                            Log.d("f", t.getMessage());
-                        }
-
-                    });
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
                 }
-
-            }
         });
+
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
 
     }
 }

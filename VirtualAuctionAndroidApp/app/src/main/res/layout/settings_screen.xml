@@ -4,107 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
 
     <Button
         android:id="@+id/leave_button"
-        android:inputType="textPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:text="Leave" />
 
     <Button
         android:id="@+id/quit_button"
-        android:inputType="textPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/leave_button"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
         android:text="Quit" />
 
 
     <Button
         android:id="@+id/auction_params_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/quit_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Auction Params" />
 
     <Button
         android:id="@+id/current_set_players_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/auction_params_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Current Set Players" />
 
     <Button
         android:id="@+id/skip_all_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/current_set_players_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Skip All" />
 
     <Button
         android:id="@+id/skip_this_set_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/skip_all_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Skip this Set" />
 
     <Button
         android:id="@+id/unskip_set_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/skip_this_set_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Unskip the Set" />
 
     <Button
         android:id="@+id/pause_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/unskip_set_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Pause" />
 
     <Button
         android:id="@+id/play_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/pause_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Play" />
 
 
     <Button
         android:id="@+id/change_host_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:layout_below="@+id/play_button"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
         android:ems="10"
         android:text="Change Host" />
 

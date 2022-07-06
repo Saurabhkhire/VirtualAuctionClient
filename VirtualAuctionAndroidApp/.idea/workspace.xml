@@ -5,9 +5,9 @@
       <config>
         <device id="_device_class_phone" />
         <device id="automotive_1024p_landscape" />
-        <device id="pixel_5" />
         <device id="_device_class_foldable" />
-        <option name="nonWearDeviceLastStateName" value="landscape" />
+        <device id="pixel_5" />
+        <option name="nonWearDeviceLastStateName" value="portrait" />
       </config>
     </shared>
   </component>
@@ -69,11 +69,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
+        <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="28c7pB0m7LqoAbfWZrIBBwqd5HX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -88,8 +98,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/auction/virtualauctionclient/common" />
-    <property name="project.structure.last.edited" value="Build Variants" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ScoreAppCricket/ScoreAppCricket" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -100,15 +111,23 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\java\com\auction\virtualauctionclient\common" />
+      <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\res\drawable" />
+      <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\res\mipmap-anydpi-v26" />
+      <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\res\mipmap-hdpi" />
       <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\res\layout" />
+      <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\res\layout-small" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Saurabh\Projects\VirtualAuctionClient\VirtualAuctionAndroidApp\app\src\main\res\layout" />
     </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.auction.virtualauctionclient.loginregister" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.auction.virtualauctionclient.common" />
+      <recent name="com.auction.virtualauctionclient.room" />
       <recent name="com.auction.virtualauctionclient.auctionscreen" />
+      <recent name="com.auction.virtualauctionclient.accountscreen" />
+      <recent name="com.auction.virtualauctionclient.common" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -255,5 +274,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/auction/virtualauctionclient/auctionscreen/AddPlayersAfterAuctionListScreen.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

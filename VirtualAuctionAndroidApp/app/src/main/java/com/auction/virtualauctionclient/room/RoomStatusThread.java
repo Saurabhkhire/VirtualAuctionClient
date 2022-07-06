@@ -3,10 +3,16 @@ package com.auction.virtualauctionclient.room;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.auction.virtualauctionclient.R;
@@ -16,12 +22,15 @@ import com.auction.virtualauctionclient.common.Constants;
 import com.auction.virtualauctionclient.model.RoomInfo;
 import com.auction.virtualauctionclient.model.RoomStatusResponse;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RoomStatusThread implements Runnable {
 
+    private TableLayout usernamesTable;
     boolean continueThread=true;
     private Context context;
     private Context contextForFinish;
@@ -33,7 +42,7 @@ public class RoomStatusThread implements Runnable {
     String userName;
     String roomId;
 
-    public RoomStatusThread(TextView UsernamesList,TextView TeamsList, TextView HostText,Spinner SelectTeam, Button StartBtn,Button SettingsBtn, String userName, String roomId, Context context, Context contextForFinish) {
+    public RoomStatusThread(TextView UsernamesList,TextView TeamsList, TextView HostText,Spinner SelectTeam, Button StartBtn,Button SettingsBtn, String userName, String roomId, Context context, Context contextForFinish, TableLayout usernamesTable) {
         this.UsernamesList = UsernamesList;
         this.TeamsList = TeamsList;
         this.SelectTeam = SelectTeam;
@@ -44,6 +53,7 @@ public class RoomStatusThread implements Runnable {
         this.HostText = HostText;
         this.context = context;
         this.contextForFinish = contextForFinish;
+        this.usernamesTable = usernamesTable;
     }
     @Override
     public void run() {
@@ -51,6 +61,8 @@ public class RoomStatusThread implements Runnable {
         final String[] status = {"","","","","",""};
 
         while(continueThread) {
+
+
 
             try {
 
@@ -73,41 +85,59 @@ public class RoomStatusThread implements Runnable {
 
                         if (status[0].equals(Constants.I_START_STATUS) || status[0].equals(Constants.I_HALT_STATUS)) {
 
-                            String usernameList = response.body().getUsernameslist();
-                            String teamsList = response.body().getTeamslist();
+                            String usernameList = "Username," + response.body().getUsernameslist();
+                            String teamsList = "Team," + response.body().getTeamslist();
                             String host = response.body().getHost();
 
                             String[] splitUsernameList = usernameList.split(",");
                             String[] splitTeamList = teamsList.split(",");
 
 
-
-                            String usernames = "Usernames \n";
-                            String teams = "Teams \n";
-
                             if (usernameList != null) {
 
-                                for (int i = 0; i < splitUsernameList.length; i++) {
-                                    if (splitUsernameList[i].equals(host)) {
-                                        usernames = usernames + splitUsernameList[i] + "(Host) \n";
-                                        if (splitTeamList[i].equals("") || splitTeamList[i] == null || splitTeamList[i].equals(Constants.I_NA)) {
-                                            teams = teams + "\n";
-                                        } else {
-                                            teams = teams + splitTeamList[i] + "\n";
-                                        }
-                                    } else {
-                                        usernames = usernames + splitUsernameList[i] + "\n";
-                                        if (splitTeamList[i].equals("") || splitTeamList[i] == null || splitTeamList[i].equals(Constants.I_NA)) {
-                                            teams = teams + "\n";
-                                        } else {
-                                            teams = teams + splitTeamList[i] + "\n";
-                                        }
-                                    }
+                                usernamesTable.removeAllViews();
 
+                                //modelArrayList = new ArrayList<>();
+                                GradientDrawable border = new GradientDrawable();
+                                border.setColor(0xFF000000); //white background
+                                border.setStroke(1, 0xFFFFFFFF); //black border with full opacity
+                                usernamesTable.setBackground(border);
+                                for(int i = 0; i < splitUsernameList.length; i++) {
+                                    TableRow tr = new TableRow(context);
+                                    //tr.setMinimumHeight(30);
+                                    //tr.setBackgroundColor(Color.BLACK);
+                                    TextView c1 = new TextView(context);
+                                    String username = splitUsernameList[i];
+                                    if(username.equals(host)) {
+                                        username = username + " (Host) ";
+                                    }
+                                    c1.setText(username);
+                                    c1.setGravity(Gravity.CENTER);
+                                    c1.setBackground(border);
+                                    c1.setHeight(50);
+                                    c1.setWidth(380);
+                                    c1.setTextColor(Color.WHITE);
+                                    TextView c2 = new TextView(context);
+                                    String team = splitTeamList[i];
+                                    if (team.equals("") || team.equals(Constants.I_NA)) {
+                                        team = "";
+                                    }
+                                    c2.setText(team);
+                                    c2.setGravity(Gravity.CENTER);
+                                    c2.setBackground(border);
+                                    c2.setHeight(50);
+                                    c2.setWidth(380);
+                                    c2.setTextColor(Color.WHITE);
+                                    tr.addView(c1);
+                                    tr.addView(c2);
+
+                                    usernamesTable.addView(tr);
                                 }
 
-                                UsernamesList.setText(usernames);
-                                TeamsList.setText(teams);
+
+
+                                //UsernamesList.setText(usernames);
+                                //TeamsList.setText(teams);
 
                                 if (host.equals(userName)) {
                                     HostText.setText("Host");

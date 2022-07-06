@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
 
     <TextView
@@ -20,155 +20,300 @@
         android:inputType="textPersonName"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-    <TextView
-        android:id="@+id/SelectTeamTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TableRow
+        android:id="@+id/SelectTeamDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/AuctionSettingsLabel"
-        android:background="#F2F2F2"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Select Team"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/MaxForeignersTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/SelectTeamTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Max Foreigners" />
-
-    <TextView
-        android:id="@+id/MinTotalTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MaxForeignersTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Min Total" />
-
-    <TextView
-        android:id="@+id/MaxTotalTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MinTotalTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Max Total" />
-
-    <TextView
-        android:id="@+id/MaxBudgetTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MaxTotalTxt"
-        android:background="#F2F2F2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:textSize="16sp"
-        android:text="Max Budget" />
-
-
-    <Spinner
-        android:id="@+id/SelectTeamSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/SelectTeamTxt"
-        android:layout_alignBottom="@+id/AuctionSettingsLabel"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:textSize="16sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""/>
-
-    <EditText
-        android:id="@+id/MaxForeignersEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MaxForeignersTxt"
-        android:layout_alignBottom="@+id/SelectTeamSpinner"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
         android:text=""
-        android:textSize="16sp" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
 
-    <EditText
-        android:id="@+id/MinTotalEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MinTotalTxt"
-        android:layout_alignBottom="@+id/MaxForeignersEdit"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/MaxTotalEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MaxTotalTxt"
-        android:layout_alignBottom="@+id/MinTotalEdit"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/SelectTeamTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="Select Team"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/MaxBudgetEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/MaxBudgetTxt"
-        android:layout_alignBottom="@+id/MaxTotalEdit"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <Spinner
+            android:id="@+id/SelectTeamEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="#000000"
+           />
+
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/MaxForeignersDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/SelectTeamDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
         android:text=""
-        android:textSize="16sp" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+        <TextView
+            android:id="@+id/MaxForeignersTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="MaxForeigners"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/MaxForeignersEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/MinTotalDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/MaxForeignersDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+        <TextView
+            android:id="@+id/MinTotalTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:text="MinTotal"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/MinTotalEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/MaxTotalDesign"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/MinTotalDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+
+        <TextView
+            android:id="@+id/MaxTotalTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:text="MaxTotal"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/MaxTotalEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="5dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/MaxBudgetDesign"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/MaxTotalDesign"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/white_border_rounded_rectangle"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp">
+
+
+
+        <TextView
+            android:id="@+id/MaxBudgetTxt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:text="MaxBudget"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/MaxBudgetEdit"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="5dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/MaxBudgetEditLakhs"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="5dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="lakhs"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="208dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="-190dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/MaxBudgetEditCrores"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="-205dp"
+            android:layout_marginTop="32dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/MaxBudgetTextCrores"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="32dp"
+            android:background="#000000"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="crores"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </TableRow>
+
 
     <Button
         android:id="@+id/save_button"
-        android:inputType="textPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MaxTotalTxt"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="100dp"
-        android:text="Save" />
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/MaxBudgetDesign"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Save"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

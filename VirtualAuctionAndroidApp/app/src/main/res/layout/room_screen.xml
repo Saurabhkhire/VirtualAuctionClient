@@ -4,69 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginregister.MainActivity">
 
 
     <Button
-        android:id="@+id/create_room_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="150dp"
+        android:id="@+id/create_public_room_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Create Room"/>
+        android:text="Create Public Room"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/RoomIdTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/create_room_button"
-        android:background="#F2F2F2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="300dp"
-        android:layout_marginTop="100dp"
-        android:inputType="textPersonName"
-        android:text="Room Id"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/RoomIdEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/RoomIdTxt"
-        android:layout_alignBottom="@+id/create_room_button"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="21dp"
-        android:background="#F2F2F2"
+    <Button
+        android:id="@+id/create_private_room_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/create_public_room_button"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="16sp" />
+        android:textStyle="bold"
+        android:text="Create Private Room"/>
 
      <Button
-        android:id="@+id/join_room_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/RoomIdEdit"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="100dp"
+        android:id="@+id/join_public_room_button"
+         android:layout_width="300dp"
+         android:layout_height="50dp"
+         android:layout_marginTop="20dp"
+         android:layout_marginStart="30dp"
+         android:textColor="@color/white"
+        android:layout_below="@+id/create_private_room_button"
         android:ems="10"
-        android:text="Join Room" />
+         android:textStyle="bold"
+        android:text="Join Public Room" />
+
+    <Button
+        android:id="@+id/join_private_room_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/join_public_room_button"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="Join Private Room" />
 
     <Button
         android:id="@+id/join_random_room_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/join_room_button"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="100dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/join_private_room_button"
         android:ems="10"
+        android:textStyle="bold"
         android:text="Join Random Room" />
 
 

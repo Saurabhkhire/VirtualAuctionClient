@@ -1,5 +1,6 @@
 package com.auction.virtualauctionclient.room;
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,10 +30,11 @@ import retrofit2.Response;
 public class AuctionSettingsScreen extends AppCompatActivity
 {
 
+    private boolean maxForeignersCheck, minTotalCheck, maxTotalCheck, maxBudgetCheck;
     private Button SaveBtn;
     private Spinner SelectTeamSpinner;
     private EditText MaxForeignersEdit, MinTotalEdit, MaxTotalEdit, MaxBudgetEdit;
-    private TextView MaxForeignersText, MinTotalText, MaxTotalText, MaxBudgetText;
+    private TextView MaxForeignersText, MinTotalText, MaxTotalText, MaxBudgetText, MaxBudgetEditLakhs, MaxBudgetEditCrores;
 
     // try {
     @Override
@@ -45,8 +47,11 @@ public class AuctionSettingsScreen extends AppCompatActivity
         String status = bundle.getString("RoomStatus");
         String host = bundle.getString("Host");
 
+        AssetManager assetManager = getResources().getAssets();
+        CommonLogic.setBackgroundImage(Constants.GAME_BACKGROUND, this.findViewById(android.R.id.content), assetManager);
+
         SaveBtn = findViewById(R.id.save_button);
-        SelectTeamSpinner =  findViewById(R.id.SelectTeamSpinner);
+        SelectTeamSpinner =  findViewById(R.id.SelectTeamEdit);
         MaxForeignersText = findViewById(R.id.MaxForeignersTxt);
         MinTotalText = findViewById(R.id.MinTotalTxt);
         MaxTotalText = findViewById(R.id.MaxTotalTxt);
@@ -55,7 +60,10 @@ public class AuctionSettingsScreen extends AppCompatActivity
         MinTotalEdit = findViewById(R.id.MinTotalEdit);
         MaxTotalEdit = findViewById(R.id.MaxTotalEdit);
         MaxBudgetEdit =  findViewById(R.id.MaxBudgetEdit);
+        MaxBudgetEditLakhs = findViewById(R.id.MaxBudgetEditLakhs);
+        MaxBudgetEditCrores = findViewById(R.id.MaxBudgetEditCrores);
 
+        CommonLogic.setBackgroundForButtons(Constants.BUTTON_BACKGROUND2, SaveBtn);
 
         MaxForeignersEdit.addTextChangedListener(new TextWatcher() {
 
@@ -64,7 +72,7 @@ public class AuctionSettingsScreen extends AppCompatActivity
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                CommonLogic.editTextCheck(MaxForeignersEdit, Constants.I_MAX_FOREIGNERS_NAME, Constants.NUMERIC_ENTRY, 1, 2);
+                maxForeignersCheck = CommonLogic.editTextCheck(MaxForeignersEdit, Constants.I_MAX_FOREIGNERS_NAME, Constants.NOT_NULL, Constants.NUMERIC_ENTRY, 1, 2);
             }
         });
 
@@ -75,7 +83,7 @@ public class AuctionSettingsScreen extends AppCompatActivity
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                CommonLogic.editTextCheck(MinTotalEdit, Constants.I_MIN_TOTAL_NAME, Constants.NUMERIC_ENTRY, 1, 2);
+                minTotalCheck = CommonLogic.editTextCheck(MinTotalEdit, Constants.I_MIN_TOTAL_NAME, Constants.NOT_NULL, Constants.NUMERIC_ENTRY, 1, 2);
             }
         });
 
@@ -86,23 +94,29 @@ public class AuctionSettingsScreen extends AppCompatActivity
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                CommonLogic.editTextCheck(MaxTotalEdit, Constants.I_MAX_TOTAL_NAME, Constants.NUMERIC_ENTRY, 1, 2);
+                maxTotalCheck = CommonLogic.editTextCheck(MaxTotalEdit, Constants.I_MAX_TOTAL_NAME, Constants.NOT_NULL, Constants.NUMERIC_ENTRY, 1, 2);
             }
         });
 
         MaxBudgetEdit.addTextChangedListener(new TextWatcher() {
 
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+                if(!MaxBudgetEdit.getText().toString().equals("")) {
+                    double crores = Double.parseDouble(MaxBudgetEdit.getText().toString());
+                    crores = crores / 100.00;
+                    MaxBudgetEditCrores.setText(String.format("%.2f", crores) + " crores");
+                }
+            }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                CommonLogic.editTextCheck(MaxBudgetEdit, Constants.I_MAX_BUDGET_NAME, Constants.NUMERIC_ENTRY, 1, 5);
+                maxBudgetCheck = CommonLogic.editTextCheck(MaxBudgetEdit, Constants.I_MAX_BUDGET_NAME, Constants.NOT_NULL, Constants.NUMERIC_ENTRY, 3, 5);
             }
         });
 
         String[] SelectTeamList = new String[]{"csk", "rcb", "dc","mi","kkr","pbks","rr","srh","gt","lsg"};
-        ArrayAdapter<String> SelectTeamListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, SelectTeamList);
+        ArrayAdapter<String> SelectTeamListAdapter = new ArrayAdapter<>(this, R.layout.spinner_list, SelectTeamList);
         SelectTeamSpinner.setAdapter(SelectTeamListAdapter);
 
         if(!host.equals(Constants.I_HOST)) {
@@ -115,6 +129,8 @@ public class AuctionSettingsScreen extends AppCompatActivity
             MinTotalEdit.setVisibility(View.INVISIBLE);
             MaxTotalEdit.setVisibility(View.INVISIBLE);
             MaxBudgetEdit.setVisibility(View.INVISIBLE);
+            MaxBudgetEditLakhs.setVisibility(View.INVISIBLE);
+            MaxBudgetEditCrores.setVisibility(View.INVISIBLE);
         }
 
         SaveBtn.setOnClickListener(new View.OnClickListener() {
@@ -134,10 +150,6 @@ public class AuctionSettingsScreen extends AppCompatActivity
 
                     if (host.equals(Constants.I_HOST)) {
 
-                        boolean maxForeignersCheck = CommonLogic.editTextCheck(MaxForeignersEdit, Constants.I_MAX_FOREIGNERS_NAME, Constants.NUMERIC_ENTRY, 1, 2);
-                        boolean minTotalCheck = CommonLogic.editTextCheck(MinTotalEdit, Constants.I_MIN_TOTAL_NAME, Constants.NUMERIC_ENTRY, 1, 2);
-                        boolean maxTotalCheck = CommonLogic.editTextCheck(MaxTotalEdit, Constants.I_MIN_TOTAL_NAME, Constants.NUMERIC_ENTRY, 1, 2);
-                        boolean maxBudgetCheck = CommonLogic.editTextCheck(MaxBudgetEdit, Constants.I_MAX_BUDGET_NAME, Constants.NUMERIC_ENTRY, 1, 2);
 
                                 if(maxForeignersCheck && minTotalCheck && maxTotalCheck && maxBudgetCheck) {
 
@@ -148,11 +160,11 @@ public class AuctionSettingsScreen extends AppCompatActivity
                                     int maxTotal = Integer.parseInt(MaxTotalEdit.getText().toString());
                                     int maxBudget = Integer.parseInt(MaxBudgetEdit.getText().toString());
 
-                                    if (minTotal >= maxTotal) {
+                                    if (minTotal > maxTotal) {
 
-                                        errorMessage = errorMessage + Constants.MAX_FOREIGENER_GREATER_MESSAGE;
+                                        errorMessage = errorMessage + Constants.MAX_FOREIGNER_GREATER_MESSAGE;
 
-                                    } else if (maxForeigners >= minTotal) {
+                                    } else if (maxForeigners > minTotal) {
 
                                         errorMessage = errorMessage + Constants.MIN_TOTAL_GREATER_MESSAGE;
 
@@ -219,6 +231,12 @@ public class AuctionSettingsScreen extends AppCompatActivity
 
         });
 
+
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
 
     }
 }

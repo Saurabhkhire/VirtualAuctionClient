@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginregister.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/StartImageBorder"
+        android:layout_width="340dp"
+        android:layout_height="420dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="250dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/rectangle"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/StartImage"
+        android:layout_width="338dp"
+        android:layout_height="398dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="251dp"
+        android:adjustViewBounds="true"
+        android:background="#F2F2F2"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:scaleType="fitCenter" />
+
+    <ProgressBar
+        android:id="@+id/LoadingBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/StartImageBorder"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="140dp"
+        android:ems="10" />
+
+
+    <Button
+        android:id="@+id/register1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LoadingBar"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="100dp"
+        android:ems="10"
+        android:text="AAA"/>
+
+
+</RelativeLayout>
